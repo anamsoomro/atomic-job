@@ -185,7 +185,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_1.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_1.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -205,7 +205,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_2.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_2.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -225,7 +225,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_3.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_3.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -245,7 +245,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_4.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_4.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -265,7 +265,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_5.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_5.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -284,7 +284,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_1.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_1.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -304,7 +304,7 @@ export default class Template extends React.Component{
           <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
             <a href="job-single.html"></a>
             <div className="job-listing-logo">
-              <img src="%PUBLIC_URL%/images/job_logo_2.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+              <img src="/images/job_logo_2.jpg" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
             </div>
 
             <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
@@ -376,29 +376,29 @@ export default class Template extends React.Component{
             
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_mailchimp.svg" alt="Image" className="img-fluid logo-1"></img>
+            <img src="/images/logo_mailchimp.svg" alt="Image" className="img-fluid logo-1"></img>
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_paypal.svg" alt="Image" className="img-fluid logo-2"></img>
+            <img src="/images/logo_paypal.svg" alt="Image" className="img-fluid logo-2"></img>
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_stripe.svg" alt="Image" className="img-fluid logo-3"></img>
+            <img src="/images/logo_stripe.svg" alt="Image" className="img-fluid logo-3"></img>
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_visa.svg" alt="Image" className="img-fluid logo-4"></img>
+            <img src="/images/logo_visa.svg" alt="Image" className="img-fluid logo-4"></img>
           </div>
 
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_apple.svg" alt="Image" className="img-fluid logo-5"></img>
+            <img src="/images/logo_apple.svg" alt="Image" className="img-fluid logo-5"></img>
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_tinder.svg" alt="Image" className="img-fluid logo-6"></img>
+            <img src="/images/logo_tinder.svg" alt="Image" className="img-fluid logo-6"></img>
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_sony.svg" alt="Image" className="img-fluid logo-7"></img>
+            <img src="/images/logo_sony.svg" alt="Image" className="img-fluid logo-7"></img>
           </div>
           <div className="col-6 col-lg-3 col-md-6 text-center">
-            <img src="%PUBLIC_URL%/images/logo_airbnb.svg" alt="Image" className="img-fluid logo-8"></img>
+            <img src="/images/logo_airbnb.svg" alt="Image" className="img-fluid logo-8"></img>
           </div>
         </div>
       </div>
@@ -419,7 +419,7 @@ export default class Template extends React.Component{
                 </blockquote>
               </div>
               <div className="col-lg-6 align-self-end text-center text-lg-right">
-                <img src="%PUBLIC_URL%/images/person_transparent_2.png" alt="Image" className="img-fluid mb-0"></img>
+                <img src="/images/person_transparent_2.png" alt="Image" className="img-fluid mb-0"></img>
               </div>
             </div>
           </div>
@@ -433,7 +433,7 @@ export default class Template extends React.Component{
                 </blockquote>
               </div>
               <div className="col-lg-6 align-self-end text-center text-lg-right">
-                <img src="%PUBLIC_URL%/images/person_transparent.png" alt="Image" className="img-fluid mb-0"></img>
+                <img src="/images/person_transparent.png" alt="Image" className="img-fluid mb-0"></img>
               </div>
             </div>
           </div>
@@ -454,7 +454,7 @@ export default class Template extends React.Component{
             </p>
           </div>
           <div className="col-md-6 ml-auto align-self-end">
-            <img src="%PUBLIC_URL%/images/apps.png" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
+            <img src="/images/apps.png" alt="Free Website Template by Free-Template.co" className="img-fluid"></img>
           </div>
         </div>
       </div>
