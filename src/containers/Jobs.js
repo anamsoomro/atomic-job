@@ -9,7 +9,7 @@ export default class Jobs extends React.Component {
     this.state = {
       jobs : [], 
       jobsDisplay: [], 
-      user_id: 11,
+      user_id: 1,
       showJob: null
     }
   }
