@@ -23,11 +23,11 @@ export default class Navbar extends React.Component{
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="site-logo col-6">
-              <a href="index.html">JobBoard</a>
+              <a href="index.html">Atomic Job  </a>
             </div>
             <nav className="mx-auto site-navigation">
               <ul className="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-                <li><a href="index.html" className="nav-link active">Home</a></li>
+                <li><a href="/" className="nav-link active">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li className="has-children">
                   <a href="job-listings.html">Job Listings</a>
