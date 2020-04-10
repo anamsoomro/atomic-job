@@ -2,11 +2,8 @@ import React from 'react'
 import JobShow from "../components/JobShow"
 // import JobList from "../void/JobList"
 import List from '../components/List'
-<<<<<<< HEAD
 import Title from '../components/Title'
-=======
 import JobForm from "../components/JobForm"
->>>>>>> e39120031f7fc169e93ffafa30cc052b9bb20588
 
 export default class Jobs extends React.Component {
 
@@ -82,12 +79,9 @@ export default class Jobs extends React.Component {
   render(){
     return (
       <div>
-<<<<<<< HEAD
         <Title title = "Your job listings" />
         <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
-=======
       <JobForm addJob={this.addJob}/>
->>>>>>> e39120031f7fc169e93ffafa30cc052b9bb20588
         {
         this.state.showJob
         ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> 

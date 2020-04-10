@@ -6,7 +6,6 @@ import Footer from './common/Footer'
 import Navbar from './common/Navbar'
 import Jobs from './containers/Jobs'
 import Home from './containers/Home'
-<<<<<<< HEAD
 import JobShow from './components/JobShow'
 import JobForm from './components/JobForm'
 import Companies from './containers/Companies'
@@ -14,9 +13,6 @@ import SingleCompany from './containers/SingleCompany'
 import About from './containers/About'
 import Login from './containers/Login'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-=======
-// import JobList from './void/JobList'
->>>>>>> e39120031f7fc169e93ffafa30cc052b9bb20588
 
 
 export default class App extends React.Component {
