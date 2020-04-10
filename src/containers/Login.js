@@ -18,7 +18,19 @@ export default class Login extends React.Component {
   createUser = (e) => {
     e.preventDefault()
     if (this.state.password === this.state.passwordConfirm){
-
+      fetch(`http://localhost:3000/users`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(this.user())
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          localStorage.setItem("token", data.jwt)
+          this.props.handleLogin(data.user)
+        })
     }
     else{
       alert("Password and Password confirmation must be the same")
@@ -27,11 +39,23 @@ export default class Login extends React.Component {
 
   logUserIn = (e) => {
     e.preventDefault()
-
+    fetch(`http://localhost:3000/login`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+      },
+      body: JSON.stringify(this.user())
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        localStorage.setItem("token", data.jwt)
+        this.props.handleLogin(data.user)
+      })
   }
 
   user = () => {
-    return {name: this.state.userName,
+    return {username: this.state.userName,
             password: this.state.password}
   }
 

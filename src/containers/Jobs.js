@@ -7,12 +7,12 @@ import JobForm from "../components/JobForm"
 
 export default class Jobs extends React.Component {
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       jobs : [], 
       jobsDisplay: [], 
-      user_id: 11,
+      user_id: props.user.id,
       showJob: null
     }
   }
@@ -84,9 +84,8 @@ export default class Jobs extends React.Component {
       <JobForm addJob={this.addJob}/>
         {
         this.state.showJob
-        ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> 
-        : (<div>
-           <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/> </div>)
+        ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> : null
+        // : (<List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>)
         }
       </div>
     )

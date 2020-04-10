@@ -20,17 +20,32 @@ export default class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      logged: false
+      user: false
     }
   }
 
+  componentDidMount(){
+    const token = localStorage.getItem("token")
+    if(token){
+      fetch(`http://localhost:3000/auto_login`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(resp => resp.json())
+      .then(user => this.setState({user}))
+    }
+  }
+
+  handleLogin = (user) => this.setState({user})
+
   renderRoutes = () => {
-    if (this.state.logged){
+    if (this.state.user){
       return(
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" render={(routerProps) => <Home  {...routerProps}/> }/>
-            <Route exact path="/jobs" render={(routerProps) => <Jobs {...routerProps} /> }/>
+            <Route exact path="/" render={(routerProps) => <Home  {...routerProps} user={this.state.user}/> }/>
+            <Route exact path="/jobs" render={(routerProps) => <Jobs {...routerProps} user={this.state.user} /> }/>
             <Route path="/job/:id" component={<JobShow /> }/>
             <Route exact path="/job/new" render={(routerProps) => <JobForm {...routerProps} /> }/>
             <Route exact path="/companies" render={(routerProps) => <Companies {...routerProps} /> }/>
@@ -42,7 +57,7 @@ export default class App extends React.Component {
     }
     else{
       return(
-        <Login />
+        <Login handleLogin = {this.handleLogin}/>
       )
     }
  

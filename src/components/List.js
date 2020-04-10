@@ -32,6 +32,7 @@ export default class List extends React.Component{
 
 
     return(
+      
       <section className="site-section">
         <div className="container">
 
@@ -42,7 +43,7 @@ export default class List extends React.Component{
           </div>
           
           <ul className="job-listings mb-5">
-            {this.props.items.map(item => this.renderRow(item))}           
+            {!!this.props.items.length?this.props.items.map(item => this.renderRow(item)):null}           
           </ul>
 
           <div className="row pagination-wrap">

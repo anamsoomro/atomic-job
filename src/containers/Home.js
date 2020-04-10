@@ -15,7 +15,7 @@ export default class Home extends React.Component{
     return(
       <div className="site-wrap">
         {/* <JobForm /> */}
-        <Jobs />
+        <Jobs user={this.props.user}/>
         {/* <Counters /> */}
         {/* <GreenCrossPiece /> */}
         {/* <LogoList /> */}
