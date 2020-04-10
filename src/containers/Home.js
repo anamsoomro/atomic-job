@@ -7,7 +7,7 @@ import LogoList from '../components/LogosList'
 import Carousel from '../components/Carousel'
 import Mobile from '../components/Mobile'
 
-export default class Template extends React.Component{
+export default class Home extends React.Component{
 
   render(){
     return(
