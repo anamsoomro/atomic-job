@@ -1,13 +1,16 @@
 import React from 'react'
+import JobCard from './components/JobCard'
 
 
 export default class JobList extends React.Component {
 
   render(){
-    console.log("JobList", this.props)
+    console.log("JobList", this.props.jobs)
 
     return(
-      <div> I am JobList</div>
+      <div> 
+        {this.props.jobs.map(job => <JobCard job={job}/>)}
+      </div>
     )
 
   }

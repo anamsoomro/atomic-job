@@ -9,7 +9,7 @@ export default class Jobs extends React.Component {
     this.state = {
       jobs : [], 
       jobsDisplay: [], 
-      user_id: 11,
+      user_id: 1,
       showJob: null
     }
   }
@@ -35,7 +35,7 @@ export default class Jobs extends React.Component {
   render(){
     return (
       <div>
-        <JobList jobs={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
+        <JobList jobs={this.state.jobsDisplay } handleShowJob={this.handleShowJob}/>
         {/* <JobShow job={this.state.showJob}/> */}
         <JobShow job={this.state.jobsDisplay[0]}/> 
 
