@@ -2,6 +2,7 @@ import React from 'react'
 
 export default class JobForm extends React.Component{
 
+
   render(){
     return(
       <section className="home-section section-hero overlay bg-image" style={{"background-image": "url('images/hero_1.jpg')"}} id="home-section">
@@ -13,35 +14,27 @@ export default class JobForm extends React.Component{
                 <h1 className="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
                 <p>I dont know how we will use that thing, but you can edit it in the /components/Jobform.js</p>
               </div>
-              <form method="post" className="search-jobs-form">
+              {/* <form method="post" className="search-jobs-form"> */}
+              <form className="search-jobs-form" onSubmit={this.props.addJob}>
+
                 <div className="row mb-5">
-                  <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <input type="text" className="form-control form-control-lg" placeholder="Job title, Company..."></input>
+                  <div className="span2 offset1 mr-4" >
+                    <input type="text" className="form-control form-control-lg" placeholder="Job title..."></input>
                   </div>
-                  <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <select className="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Region">
-                      <option>Anywhere</option>
-                      <option>San Francisco</option>
-                      <option>Palo Alto</option>
-                      <option>New York</option>
-                      <option>Manhattan</option>
-                      <option>Ontario</option>
-                      <option>Toronto</option>
-                      <option>Kansas</option>
-                      <option>Mountain View</option>
-                    </select>
+                  <div className="span2 mr-4">
+                    <input type="text" className="form-control form-control-lg" placeholder="Company..."></input>
                   </div>
-                  <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <select className="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Job Type">
-                      <option>Part Time</option>
-                      <option>Full Time</option>
-                    </select>
+                  <div className="span2 mr-4">
+                    <input type="text" className="form-control form-control-lg" placeholder="Location..."></input>
                   </div>
-                  <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                  <div className="span2 mr-4">
+                    <input type="text" className="form-control form-control-lg" placeholder="Link..."></input>
+                  </div>
+                  <div className="span2 mr-4">
                     <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Search Job</button>
                   </div>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-12 popular-keywords">
                     <h3>Trending Keywords:</h3>
                     <ul className="keywords list-unstyled m-0 p-0">
@@ -50,7 +43,7 @@ export default class JobForm extends React.Component{
                       <li><a href="#" className="">Developer</a></li>
                     </ul>
                   </div>
-                </div>
+                </div> */}
               </form>
             </div>
           </div>
