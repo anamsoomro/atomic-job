@@ -1,6 +1,7 @@
 import React from 'react'
 import JobShow from "../components/JobShow"
 import JobList from "./JobList"
+import List from '../components/List'
 
 export default class Jobs extends React.Component {
 
@@ -36,7 +37,7 @@ export default class Jobs extends React.Component {
   render(){
     return (
       <div>
-        <JobList jobs={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
+        <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
         {
         this.state.showJob
         ? <JobShow job={this.state.showJob}/> 
@@ -47,3 +48,19 @@ export default class Jobs extends React.Component {
   }
 
 }
+
+// title: "this is title from the default props",
+// items: [
+//   {link: "job-single.html",
+//   logo: "/images/job_logo_1.jpg",
+//   title: "Product Designer",
+//   company: "Adidas",
+//   location: "New York",
+//   type: "Remote"},
+
+// t.string "title"
+// t.string "company"
+// t.string "status"
+// t.boolean "interview"
+// t.string "location"
+// t.string "url"

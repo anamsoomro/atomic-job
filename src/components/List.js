@@ -9,7 +9,7 @@ export default class List extends React.Component{
   renderRow = (item) => {
     return(
       <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-      <a href={item.link}></a> 
+      <a href={item.url}></a> 
       <div className="job-listing-logo">
         <img src= {item.logo} alt={`${item.title} - ${item.company}`} className="img-fluid"></img>
       </div>
@@ -23,7 +23,7 @@ export default class List extends React.Component{
           <span className="icon-room"></span> {item.location}
         </div>
         <div className="job-listing-meta">
-          <span className="badge badge-danger">{item.type}</span>
+          <span className="badge badge-danger">{item.status}</span>
         </div>
       </div>
       
@@ -75,47 +75,47 @@ export default class List extends React.Component{
 List.defaultProps = {
   title: "this is title from the default props",
   items: [
-    {link: "job-single.html",
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
-    {link: "job-single.html",
+    status: "Remote"},
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
-    {link: "job-single.html",
+    status: "Remote"},
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
-    {link: "job-single.html",
+    status: "Remote"},
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
-    {link: "job-single.html",
+    status: "Remote"},
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
-    {link: "job-single.html",
+    status: "Remote"},
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
-    {link: "job-single.html",
+    status: "Remote"},
+    {url: "job-single.html",
     logo: "/images/job_logo_1.jpg",
     title: "Product Designer",
     company: "Adidas",
     location: "New York",
-    type: "Remote"},
+    status: "Remote"},
   ]
 }

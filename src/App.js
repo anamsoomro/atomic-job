@@ -5,14 +5,22 @@ import Template from './containers/Template'
 import Footer from './containers/Footer'
 import Navbar from './containers/Navbar'
 import Jobs from './containers/Jobs'
+import Home from './containers/Home'
+import JobList from './containers/JobList'
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
-      {/* <Template /> */}
-      <Jobs />
-      {/* <Footer /> */}
+      <Navbar /> 
+      <Home />
+      {/* <Jobs /> */}
+         {/* <SingleJob /> */}
+      {/* <JobForm/> */}
+      {/* <Companies /> */}
+        {/* <SingleCompany /> */}
+      {/* <About /> */}
+    
+      <Footer />
     </div>
   );
 }
