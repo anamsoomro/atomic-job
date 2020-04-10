@@ -1,5 +1,5 @@
 import React from 'react'
-import JobShow from "./components/JobShow"
+import JobShow from "../components/JobShow"
 import JobList from "./JobList"
 
 export default class Jobs extends React.Component {
@@ -15,13 +15,14 @@ export default class Jobs extends React.Component {
   }
 
   componentDidMount(){
-    // we can pass username/username_id to the backend 
+    // we can pass username or user_id to the backend 
     fetch(`http://localhost:3000/users/${this.state.user_id}/jobs`)
     .then(resp => resp.json())
     .then( jobData => {
       this.setState({
         jobs: jobData,
-        jobsDisplay: jobData
+        jobsDisplay: jobData,
+        showJob: jobData[0]
       })
     })
   }
@@ -36,8 +37,11 @@ export default class Jobs extends React.Component {
     return (
       <div>
         <JobList jobs={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
-        {/* <JobShow job={this.state.showJob}/> */}
-        <JobShow job={this.state.jobsDisplay[0]}/> 
+        {
+        this.state.showJob
+        ? <JobShow job={this.state.showJob}/> 
+        : null
+        }
 
       </div>
     )
