@@ -2,6 +2,7 @@ import React from 'react'
 import JobShow from "../components/JobShow"
 import JobList from "./JobList"
 import List from '../components/List'
+import Title from '../components/Title'
 
 export default class Jobs extends React.Component {
 
@@ -37,6 +38,7 @@ export default class Jobs extends React.Component {
   render(){
     return (
       <div>
+        <Title title = "Your job listings" />
         <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
         {
         this.state.showJob
