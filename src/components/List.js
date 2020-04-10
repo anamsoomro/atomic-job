@@ -2,14 +2,10 @@ import React from 'react'
 
 export default class List extends React.Component{
 
-
-
-  
-
   renderRow = (item) => {
     return(
-      <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-      <a href={item.url}></a> 
+      <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" onClick={()=>this.props.handleShowJob(item)}>
+      {/* <a href={item.url}></a>  */}
       <div className="job-listing-logo">
         <img src= {item.logo} alt={`${item.title} - ${item.company}`} className="img-fluid"></img>
       </div>
@@ -26,9 +22,10 @@ export default class List extends React.Component{
           <span className="badge badge-danger">{item.status}</span>
         </div>
       </div>
-      
     </li>
     )
+
+    
   }
 
   render(){

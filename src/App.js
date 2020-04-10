@@ -6,7 +6,7 @@ import Footer from './containers/Footer'
 import Navbar from './containers/Navbar'
 import Jobs from './containers/Jobs'
 import Home from './containers/Home'
-import JobList from './containers/JobList'
+// import JobList from './void/JobList'
 
 function App() {
   return (

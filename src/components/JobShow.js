@@ -40,7 +40,7 @@ export default class JobShow extends React.Component {
 
   addTask = (event, task) => {
     event.preventDefault()
-    fetch(`http://localhost:3000/job_tasks`, {
+    let postObj = {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -50,10 +50,11 @@ export default class JobShow extends React.Component {
         closed: false,
         job_id: this.props.job.id
       })
-    })
+    }
+    event.target.reset()
+    fetch(`http://localhost:3000/job_tasks`, postObj)
     .then(resp => resp.json())
     .then(newTask => {
-      // event.target.reset() # (TypeError): Cannot read property 'reset' of null
       this.state.tasks.push(newTask)
       this.setState({
         tasks: this.state.tasks
@@ -84,7 +85,7 @@ export default class JobShow extends React.Component {
   }
 
   deleteTask = (task) => {
-    fetch(`http://localhost:3000/job_tasks/${task.id}`,{
+    fetch(`http://localhost:3000/job_tasks/${task.id}`, {
       method: "DELETE"
     })
     .then(resp => resp.json())
@@ -132,19 +133,20 @@ export default class JobShow extends React.Component {
 
   addNote = (event, note) => {
     event.preventDefault()
-    fetch(`http://localhost:3000/notes`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        content: event.target[0].value,
-        job_id: this.props.job.id
-      })
-    })
+    let postObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          content: event.target[0].value,
+          job_id: this.props.job.id
+        })
+    }
+    event.target.reset()
+    fetch(`http://localhost:3000/notes`, postObj)
     .then(resp => resp.json())
     .then(newNote => {
-      // event.target.reset() # (TypeError): Cannot read property 'reset' of null
       this.state.notes.push(newNote)
       this.setState({
         notes: this.state.notes
@@ -193,6 +195,7 @@ export default class JobShow extends React.Component {
     return(
       <div> 
         <div className="jumbotron">
+        <button onClick={this.props.handleBack}> Go back </button>
           <a href={this.props.job.url} target="_blank">
             <h1> {this.props.job.title} </h1> 
           </a>
