@@ -15,7 +15,12 @@ export default class JobShow extends React.Component {
 
   // or is it better to fetch all notes and tasks while you fetch all jobs
   componentDidMount(){
-    fetch(`http://localhost:3000/jobs/${this.props.job.id}`)
+    fetch(`http://localhost:3000/jobs/${this.props.job.id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}` 
+      }
+    })
     .then(resp => resp.json())
     .then(jobData => {
       this.setState({
@@ -43,7 +48,8 @@ export default class JobShow extends React.Component {
     let postObj = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         item: event.target[0].value,
@@ -67,7 +73,10 @@ export default class JobShow extends React.Component {
     // or closed being toggle within the Task component 
     fetch(`http://localhost:3000/job_tasks/${task.id}`, {
       method: "PATCH",
-      headers: {"Content-Type": "application/json"}, 
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      }, 
       body: JSON.stringify(task)
     })
     .then(resp => resp.json())
@@ -86,7 +95,10 @@ export default class JobShow extends React.Component {
 
   deleteTask = (task) => {
     fetch(`http://localhost:3000/job_tasks/${task.id}`, {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
     })
     .then(resp => resp.json())
     .then(reminaingTaskList => {
@@ -114,7 +126,10 @@ export default class JobShow extends React.Component {
     // note here will already have updated value bc of onChange updating it
     fetch(`http://localhost:3000/notes/${note.id}`, {
       method: "PATCH",
-      headers: {"Content-Type": "application/json"}, 
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      }, 
       body: JSON.stringify(note)
     })
     .then(resp => resp.json())
@@ -136,7 +151,8 @@ export default class JobShow extends React.Component {
     let postObj = {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`
         },
         body: JSON.stringify({
           content: event.target[0].value,
@@ -157,7 +173,10 @@ export default class JobShow extends React.Component {
 
   deleteNote = (note) => {
     fetch(`http://localhost:3000/notes/${note.id}`,{
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
     })
     .then(resp => resp.json())
     .then(remainingNoteList => {
@@ -170,7 +189,10 @@ export default class JobShow extends React.Component {
   changeStatus = (event) => {
     fetch(`http://localhost:3000/jobs/${this.props.job.id}`,{
       method: "PATCH",
-      headers: "Content-Type",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      },
       body: JSON.stringify({
         status: event.target.value
       })

@@ -17,9 +17,18 @@ export default class Jobs extends React.Component {
     }
   }
 
+
+  // {"user":{"name":"dumdum","id":22},"jwt":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMn0.iTTIBEfmpXOaoj3G0A6Tm_iuU2FKAl7VIRD7RpGhVYc"}
+
   componentDidMount(){
     // we can pass username or user_id to the backend 
-    fetch(`http://localhost:3000/users/${this.state.user_id}/jobs`)
+    // HM ITS GETTING THAT I AM UNAUTHORIZED
+    fetch(`http://localhost:3000/users/${this.state.user_id}/jobs`, {
+      method: "GET", 
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
     .then(resp => resp.json())
     .then( jobData => {
       this.setState({
@@ -53,7 +62,10 @@ export default class Jobs extends React.Component {
     event.preventDefault()
     let postObject = {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      },
       body: JSON.stringify({
         title: event.target[0].value,
         company: event.target[1].value,
@@ -81,7 +93,7 @@ export default class Jobs extends React.Component {
       <div>
         <Title title = "Your job listings" />
         <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
-      <JobForm addJob={this.addJob}/>
+        <JobForm addJob={this.addJob}/>
         {
         this.state.showJob
         ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> : null
@@ -93,18 +105,3 @@ export default class Jobs extends React.Component {
 
 }
 
-// title: "this is title from the default props",
-// items: [
-//   {link: "job-single.html",
-//   logo: "/images/job_logo_1.jpg",
-//   title: "Product Designer",
-//   company: "Adidas",
-//   location: "New York",
-//   type: "Remote"},
-
-// t.string "title"
-// t.string "company"
-// t.string "status"
-// t.boolean "interview"
-// t.string "location"
-// t.string "url"

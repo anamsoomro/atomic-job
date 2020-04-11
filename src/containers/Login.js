@@ -38,6 +38,7 @@ export default class Login extends React.Component {
   }
 
   logUserIn = (e) => {
+    debugger
     e.preventDefault()
     fetch(`http://localhost:3000/login`, {
       method: "POST",
@@ -117,7 +118,7 @@ export default class Login extends React.Component {
 
                     <div className="row form-group">
                       <div className="col-md-12">
-                        <input type="submit" value="Log In" className="btn px-4 btn-primary text-white" />
+                        <input type="submit" value="Log In" className="btn px-4 btn-primary text-white" onClick={this.logUserIn}/>
                       </div>
                     </div>
 
