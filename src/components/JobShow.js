@@ -193,7 +193,7 @@ export default class JobShow extends React.Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`
       },
-      body: JSON.stringify({
+      body: JSON.stringify({ // JSON.stringify(...).then is not a function
         status: event.target.value
       })
       .then(updatedJob => {

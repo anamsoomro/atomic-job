@@ -92,13 +92,15 @@ export default class Jobs extends React.Component {
     return (
       <div>
         <Title title = "Your job listings" />
-        <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
-        <JobForm addJob={this.addJob}/>
+        {/* <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/> */}
         {
         this.state.showJob
-        ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> : null
-        // : (<List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>)
+        // ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> : null
+        ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> 
+        : (<List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>)
         }
+        <JobForm addJob={this.addJob}/>
+
       </div>
     )
   }

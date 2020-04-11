@@ -38,7 +38,6 @@ export default class Login extends React.Component {
   }
 
   logUserIn = (e) => {
-    debugger
     e.preventDefault()
     fetch(`http://localhost:3000/login`, {
       method: "POST",

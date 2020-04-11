@@ -17,7 +17,6 @@ export default class Note extends React.Component {
   }
 
   handleSubmit = (e) => {
-    debugger
     this.state.editing = false
     this.props.editNote(e, this.props.note)
   }
