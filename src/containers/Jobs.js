@@ -6,12 +6,12 @@ import JobForm from "../components/JobForm"
 
 export default class Jobs extends React.Component {
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       jobs : [], 
       jobsDisplay: [], 
-      user_id: 11,
+      user_id: props.user.id,
       showJob: null
     }
   }
