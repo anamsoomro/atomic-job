@@ -1,7 +1,6 @@
 import React from 'react'
-
-
-
+import NoteModalShow from "./NoteModalShow"
+import NoteModalCreate from "./NoteModalCreate"
 
 export default class NotesBrowser extends React.Component{
 
@@ -10,16 +9,11 @@ export default class NotesBrowser extends React.Component{
     this.state = {
       notes: [],
       notesDisplay: [],
-      // open note, whether new or editing 
-      title: "",
-      content: "",
-      category: ""
+      showNote: null
     } 
   }
 
   componentDidMount(){
-    console.log("Component did mount", this.props)
-    // Companies component has user id in props
     fetch(`http://localhost:3000/users/${this.props.user.id}/notes`, {
     method: "GET",
     headers: {
@@ -30,35 +24,33 @@ export default class NotesBrowser extends React.Component{
     .then(notesData => {
       this.setState({
         notes: notesData,
-        notesDisplay: notesData
+        notesDisplay: notesData,
+        showNote: null 
       })
     })
   }
 
-  showNote = (note) => {
+  showNoteCard = (note) => {
     return (
-      // <div className="row" key={note.id}>
-        <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" key={note.id}>
-          <div  className="block__16443 text-center d-block">
-            <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
-            <h3>{note.title}</h3>
-            <p>{note.content}</p>
-          </div>
+      <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" key={note.id} data-toggle="modal" data-target="#show-note" onClick={() => this.setShowNote(note)}>
+        <div  className="block__16443 text-center d-block">
+          <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
+          <h3>{note.title}</h3>
+          <p>{note.content}</p>
         </div>
-      // </div>
+      </div>
     )
   }
 
-  handleChange = (event) => {
-    // event.target.name will give you "name", "event" or "category"
-    // event.target.value will give you the content to change
+  setShowNote = (note) => {
+    // not sure you why you have to double click on card the first time load page 
+    console.log("setShowNote", note)
     this.setState({
-      [event.target.name]: event.target.value
+      showNote: note
     })
   }
 
-  newNote = () => {
-    // Fetch error, bad request 
+  newNote = (note) => {
     fetch("http://localhost:3000/user_notes", {
       method: "POST",
       headers: {
@@ -66,9 +58,9 @@ export default class NotesBrowser extends React.Component{
         Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
-        title: this.state.title,
-        content: this.state.content,
-        category: this.state.category, 
+        title: note.title,
+        content: note.content,
+        category: note.category, 
         user_id: this.props.user.id
       })
     })
@@ -82,53 +74,74 @@ export default class NotesBrowser extends React.Component{
     })
   }
 
+  editNote = (note) => {
+    fetch(`http://localhost:3000/user_notes/${note.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        title: note.title,
+        content: note.content,
+        category: note.category
+      })
+    })
+    .then(resp => resp.json())
+    .then(updatedNote => {
+      let updatedList = this.state.notes.map( note => 
+        note.id === updatedNote.id ?  note = updatedNote : note
+      )
+      this.setState({
+        notes: updatedList,
+        notesDisplay: updatedList
+      })
+    })
+  }
+
+  deleteNote = (note) => {
+    fetch(`http://localhost:3000/user_notes/${note.id}`,{
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(remainingNotes => {
+      // or should i have the back end not render anything back
+      // just remove element from array 
+      this.setState({
+        notes: remainingNotes,
+        notesDisplay: remainingNotes
+      })
+    })
+  }
+
   render(){
     return(
-        <section className="site-section services-section bg-light block__62849" id="next-section">
+      <section className="site-section services-section bg-light block__62849" id="next-section">
         <div className="container">
-
-        <div className="row" data-toggle="modal" data-target="#new-note">
-          <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5">
-            <div href="service-single.html" className="block__16443 text-center d-block">
-              <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
-              <h3>New Note </h3>
-              <p>Add Notes About Events, Leads or Companies</p>
-            </div>
-           </div>
-        </div> 
           <div className="row" >
-            {this.state.notesDisplay.map(note => this.showNote(note))}
+            {/* Create a New Note*/}
+            <div  className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" data-toggle="modal" data-target="#create-note" >
+              <div>
+                <div href="service-single.html" className="block__16443 text-center d-block">
+                  <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
+                  <h3>New Note </h3>
+                  <p>Add Notes About Events, Leads or Companies</p>
+                </div>
+              </div>
+            </div> 
+            {/* Existing Notes */}
+            {this.state.notesDisplay.map(note => this.showNoteCard(note))}
           </div>
         </div>
-
-
-      {/* when new note is clicked the below modal will appear */}
-      <div className="modal fade" id="new-note">
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <input type="text" name="title" placeholder="title... " onChange={this.handleChange}/>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              <input type="text" name="content" placeholder="your notes... " onChange={this.handleChange}/>
-            </div>
-            <div className="modal-footer">
-              <label>Category:</label>
-              <select name="category" onChange={this.handleChange}>
-                <option value="event"> Event </option>
-                <option value="lead"> Lead </option>
-                <option value="company"> Company </option>
-              </select>
-              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.newNote}>Save</button>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-       </div>
-       
+        <NoteModalCreate  newNote={this.newNote}  />
+        {
+          this.state.showNote
+          ? <NoteModalShow note={this.state.showNote} editNote={this.editNote} deleteNote={this.deleteNote}/>
+          : null
+        }
       </section>
     )
   }
