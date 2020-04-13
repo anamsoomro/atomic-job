@@ -27,28 +27,12 @@ export default class List extends React.Component{
         break
       case "closed":
         badge = closed
+        break
       default:
         badge = notApplied
     }
 
     return(
-    //   <li key={item.id} className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
-    //     <div className="job-listing-logo">
-    //       <img src= {item.logo} alt={`${item.title} - ${item.company}`} className="img-fluid"></img>
-    //     </div>
-    //     <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-    //       <div className="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-    //         <h2>{item.title}</h2>
-    //         <strong>{item.company}</strong>
-    //       </div>
-    //       <div className="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-    //         <span className="icon-room"></span> {item.location}
-    //       </div>
-    //       <div className="job-listing-meta">
-    //         <span className="badge badge-danger">{item.status}</span>
-    //       </div>
-    //     </div>
-    // </li>
       <tr key={item.id} data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
         {/* maybe switch below out with linkedin/monster/indeed */}
         <td>{briefcase}</td>
@@ -58,37 +42,11 @@ export default class List extends React.Component{
         <td> maybe </td>
         <td>{badge}</td>
       </tr>
-
-
-
     )
   }
 
   render(){
-    // return(
-    //    !!this.props.items.length
-    //     ? (<section className="site-section pt-0 pb-0">
-    //           <div className="container">
-    //             <div className="mb-5 mt-5" >
-    //               <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Jobs Tracking</h3>
-    //             </div>
-    //           <div className="md-form mt-0 mb-4">
-    //             <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
-    //           </div>
-    //           <ul className="job-listings mb-5">
-    //               {this.props.items.map(item => this.renderRow(item))}
-    //           </ul>
-    //         </div>
-    //       </section>)
-    //     : ((<div className="row mb-5 mt-5 justify-content-center">
-    //           <div className="col-md-7 text-center">
-    //             <h2 className="section-title mb-2">You currently are tracking no jobs...</h2>
-    //           </div>
-    //         </div> ) )
-    // )
-
     return(
-      // !!this.props.items.length
       !!this.props.items
        ? (<section className="site-section pt-0 pb-0 mb-5">
             <div className="container">
@@ -96,7 +54,7 @@ export default class List extends React.Component{
                 <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Jobs Tracking</h3>
               </div>
               <div className="md-form mt-0 mb-4">
-                <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
+                <input onChange={this.props.handleSearch} className="form-control" type="text" placeholder="Search" aria-label="Search"/>
               </div>
 
               <div className="row justify-content-center mb-5" data-aos="fade-up">
@@ -108,15 +66,19 @@ export default class List extends React.Component{
                 </div>
               </div>  
 
-              <table className="table table-hover" width="100%">
+              <table className="table table-hover" width="100%" >
                 <thead>
+                  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+                  {/* <i class="fa fa-fw fa-sort"> for up and down arrows</i> */} 
+                  {/* <i class="fa fa-sort-asc"> down arrow asc</i> */} 
+                  {/* <i class="fa fa-sort-desc"> up arrrow desc </i> */} 
                   <tr>
                     <th className="th-sm"></th>
-                    <th className="th-sm">Company</th>
-                    <th className="th-sm">Position</th>
-                    <th className="th-sm">Location</th>
-                    <th className="th-sm">Date Applied</th>
-                    <th className="th-sm">Satus</th>
+                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Company</th>
+                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Position</th>
+                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Location</th>
+                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Date Applied</th>
+                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Status</th>
                   </tr>
                 </thead>
                 <tbody>
