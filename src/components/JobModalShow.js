@@ -205,25 +205,22 @@ export default class JobModalShow extends React.Component {
           <div className="modal-content">
             <div className="modal-header">
 
-
               {this.state.editing
                 ? (<header className="text-justify">
-                    <h2> <input type="text" name="title" value={this.state.job.title} onChange={this.handleChange}/> </h2>
-                    <h4> <input type="text" name="company" value={this.state.job.company} onChange={this.handleChange}/> </h4>
-                    <h6> <input type="text" name="location" value={this.state.job.location} onChange={this.handleChange}/> </h6>
+                    <h2> <input type="text" name="title" value={this.state.job.title} placeholder="enter job title..." onChange={this.handleChange}/> </h2>
+                    <h4> <input type="text" name="company" value={this.state.job.company} placeholder="enter copmany..." onChange={this.handleChange}/> </h4>
+                    <h6> <input type="text" name="location" value={this.state.job.location} placeholder="enter link..." onChange={this.handleChange}/> </h6>
                     <h6 onClick={this.handleSubmit}> <span className="icon-check"></span> </h6>
                   </header>)
                 : (<header className="text-justify">
-                    <h2> {this.state.job.title} </h2>
+                    <a href={this.state.job.url} target="_blank">
+                      <h2> {this.state.job.title} </h2> 
+                    </a>
                     <h4> {this.state.job.company} </h4>
                     <h6> {this.state.job.location} </h6>
                     <h6 onClick={this.handleEdit}> <span className="icon-pencil"></span> </h6>
                   </header>)
               }
-
-             
-
-
 
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
