@@ -73,19 +73,19 @@ export default class Login extends React.Component {
 
                     <div className="row form-group">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" for="fname">Email</label>
+                        <label className="text-black" htmlFor="fname">Email</label>
                         <input onChange = {this.changeForm} name = "userName" type="text" id="fname" className="form-control" placeholder="Name" />
                       </div>
                     </div>
                     <div className="row form-group">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" for="fname">Password</label>
+                        <label className="text-black" htmlFor="fname">Password</label>
                         <input onChange = {this.changeForm} name = "password" type="password" id="fname" className="form-control" placeholder="Password" />
                       </div>
                     </div>
                     <div className="row form-group mb-4">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" for="fname">Re-Type Password</label>
+                        <label className="text-black" htmlFor="fname">Re-Type Password</label>
                         <input onChange = {this.changeForm}  name = "passwordConfirm" type="password" id="fname" className="form-control" placeholder="Re-type Password"/>
                       </div>
                     </div>
@@ -104,13 +104,13 @@ export default class Login extends React.Component {
 
                     <div className="row form-group">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" for="fname">Email</label>
+                        <label className="text-black" htmlFor="fname">Email</label>
                         <input onChange = {this.changeForm} name = "userName" type="text" id="fname" className="form-control" placeholder="Name" />
                       </div>
                     </div>
                     <div className="row form-group mb-4">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" for="fname">Password</label>
+                        <label className="text-black" htmlFor="fname">Password</label>
                         <input onChange = {this.changeForm} name = "password" type="password" id="fname" className="form-control" placeholder="Password" />
                       </div>
                     </div>

@@ -2,7 +2,6 @@ import React from 'react'
 // import JobShow from "../components/JobShow"
 // import JobList from "../void/JobList"
 import List from '../components/List'
-import Title from '../components/Title'
 import JobForm from "../components/JobForm"
 import JobModalShow from '../components/JobModalShow'
 
@@ -121,7 +120,8 @@ export default class Jobs extends React.Component {
   render(){
     return (
       <div>
-        <Title title = "Your job listings" />
+
+        
         <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
         <JobForm addJob={this.addJob}/>
         { this.state.showJob 

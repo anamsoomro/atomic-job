@@ -5,7 +5,7 @@ export default class JobForm extends React.Component{
 
   render(){
     return(
-      <section className="home-section section-hero overlay bg-image" style={{"background-image": "url('images/hero_1.jpg')"}} id="home-section">
+      <section className="home-section section-hero overlay bg-image" style={{"backgroundImage": "url('images/hero_1.jpg')"}} id="home-section">
 
         <div className="container">
           <div className="row align-items-center justify-content-center">
@@ -24,6 +24,7 @@ export default class JobForm extends React.Component{
                   <div className="span2 mr-4">
                     <input type="text" className="form-control form-control-lg" placeholder="Company..."></input>
                   </div>
+                  
                   <div className="span2 mr-4">
                     <input type="text" className="form-control form-control-lg" placeholder="Location..."></input>
                   </div>

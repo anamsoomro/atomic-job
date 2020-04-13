@@ -4,9 +4,8 @@ import React from 'react'
 export default class List extends React.Component{
 
   renderRow = (item) => {
-    console.log("item", item)
     return(
-      <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
+      <li key={item.id} className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
         <div className="job-listing-logo">
           <img src= {item.logo} alt={`${item.title} - ${item.company}`} className="img-fluid"></img>
         </div>
@@ -29,20 +28,24 @@ export default class List extends React.Component{
   render(){
     return(
       
-      <section className="site-section">
+      <section className="site-section pt-0">
         <div className="container">
-
-          <div className="row mb-5 justify-content-center">
+          <div className="mb-5">
+           <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Jobs Tracking</h3>
+          </div>
+        <div className="md-form mt-0 mb-4">
+          <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
+        </div>
+          {/* <div className="row mb-5 justify-content-center">
             <div className="col-md-7 text-center">
               <h2 className="section-title mb-2">{this.props.title}</h2>
             </div>
-          </div>
-          
+          </div> */}
           <ul className="job-listings mb-5">
             {!!this.props.items.length?this.props.items.map(item => this.renderRow(item)):null}           
           </ul>
 
-          <div className="row pagination-wrap">
+          {/* <div className="row pagination-wrap">
             <div className="col-md-6 text-center text-md-left mb-4 mb-md-0">
               <span>Showing 1-7 Of 43,167 Jobs</span>
             </div>
@@ -58,7 +61,7 @@ export default class List extends React.Component{
                 <a href="#" className="next">Next</a>
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
       </section>

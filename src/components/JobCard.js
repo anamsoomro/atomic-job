@@ -4,8 +4,6 @@ import React from 'react'
 export default class JobCard extends React.Component {
 
   render(){
-    console.log("JobCard", this.props)
-    
     return(
       <ul class="job-listings mb-5">
           <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">

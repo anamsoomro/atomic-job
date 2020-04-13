@@ -7,7 +7,12 @@ export default class Task extends React.Component {
     super()
     this.state = {
       editing: false,
-      task: ""
+      // task: "",
+      // closed: ""
+      task: {
+        item: "",
+        closed: ""
+      }
     }
   }
 
@@ -29,14 +34,14 @@ export default class Task extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = () => {
     this.state.editing = false
     this.props.editTask(this.state.task)
   }
 
-  toggleClosed = (e, task) => {
-    task.closed = !task.closed
-    this.props.editTask(e, task)
+  toggleClosed = () => {
+    this.state.task.closed = !this.state.task.closed
+    this.props.editTask(this.state.task)
   }
 
 
@@ -55,13 +60,21 @@ export default class Task extends React.Component {
         </div> */}
           {!this.state.editing
           ? 
-            <li className="d-flex align-items-start mb-2" onClick={this.handleEdit}>
-              <span className="icon-check_circle mr-2 text-muted"></span>
-              <span>{this.props.task.item}</span>
+            <li className="d-flex align-items-start mb-2" >
+              {/* <span className="icon-check_circle mr-2 text-muted"></span> */}
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="materialUnchecked" checked={this.state.task.closed} onChange={this.toggleClosed}/>
+                {/* <label class="form-check-label" for="materialUnchecked">Material unchecked</label> */}
+              </div>
+              <span onClick={this.handleEdit} >{this.props.task.item}</span>
             </li>
             
           : <li className="d-flex align-items-start mb-2">
-              <span className="icon-check_circle mr-2 text-muted"></span>
+              {/* <span className="icon-check_circle mr-2 text-muted"></span> */}
+              <div className="form-check">
+                <input type="checkbox" className="form-check-input" id="materialUnchecked"/>
+                {/* <label class="form-check-label" for="materialUnchecked">Material unchecked</label> */}
+              </div>
               <span>
                 <input type="text" 
                   value={this.state.task.item} 
