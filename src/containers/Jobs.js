@@ -74,7 +74,7 @@ export default class Jobs extends React.Component {
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
     .then(newJob => {
-      this.state.jobs.push(newJob)
+      this.state.jobs ? this.state.jobs.push(newJob) :  this.state.jobs = [newJob]
       this.setState({
         jobs: this.state.jobs,
         jobsDisplay: this.state.jobs
