@@ -14,10 +14,12 @@ export default class JobModalShow extends React.Component {
         interview: "",
       },
       notes: null, 
-      tasks: null 
+      tasks: null,
+      editing: false
     }
   }
 
+  // modal only mounts the first time, udpate for rest
   componentDidMount(){
     fetch(`http://localhost:3000/jobs/${this.props.job.id}`, {
       method: "GET",
@@ -34,8 +36,21 @@ export default class JobModalShow extends React.Component {
       })
     })
   }
+  componentDidUpdate(){
+    if(this.props.job.id !== this.state.job.id){
+      this.setState({
+        job: this.props.job
+      }, () => console.log("state updated", this.state.job))
+    }
+  }
 
   // FUNCTION REGARDING JOBS
+
+  handleEdit = () => {
+    this.setState({
+      editing: true
+    })
+  }
 
   handleChange = (event) => {
     this.setState({
@@ -44,7 +59,12 @@ export default class JobModalShow extends React.Component {
   }
 
   handleSubmit = () => {
+    
     this.props.editJob(this.state.job)
+    this.setState({
+      editing: false
+    })
+    // if you open a brand new job dont make any edits, hit save it takes it off of job list. but its in the database 
   }
 
 
@@ -185,11 +205,30 @@ export default class JobModalShow extends React.Component {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h3> {this.state.job.title} </h3>
-              <h4> {this.state.job.company} - {this.state.job.location} </h4>
+
+
+              {this.state.editing
+                ? (<header className="text-justify">
+                    <h2> <input type="text" name="title" value={this.state.job.title} onChange={this.handleChange}/> </h2>
+                    <h4> <input type="text" name="company" value={this.state.job.company} onChange={this.handleChange}/> </h4>
+                    <h6> <input type="text" name="location" value={this.state.job.location} onChange={this.handleChange}/> </h6>
+                    <h6 onClick={this.handleSubmit}> save </h6>
+                  </header>)
+                : (<header className="text-justify">
+                    <h2> {this.state.job.title} </h2>
+                    <h4> {this.state.job.company} </h4>
+                    <h6> {this.state.job.location} </h6>
+                    <h6 onClick={this.handleEdit}> edit job info </h6>
+                  </header>)
+              }
+
+             
+
+
+
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                  <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <div className="modal-body">

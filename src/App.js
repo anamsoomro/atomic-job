@@ -8,7 +8,7 @@ import Jobs from './containers/Jobs'
 import Home from './containers/Home'
 // import JobShow from './components/JobShow'
 import JobForm from './components/JobForm'
-import Companies from './containers/Companies'
+import NotesPage from './containers/NotesPage'
 import SingleCompany from './containers/SingleCompany'
 import About from './containers/About'
 import Login from './containers/Login'
@@ -48,7 +48,7 @@ export default class App extends React.Component {
             <Route exact path="/jobs" render={(routerProps) => <Jobs {...routerProps} user={this.state.user} /> }/>
             {/* <Route path="/job/:id" component={<JobShow /> }/> */}
             <Route exact path="/job/new" render={(routerProps) => <JobForm {...routerProps} /> }/>
-            <Route exact path="/companies" render={(routerProps) => <Companies {...routerProps} user={this.state.user} /> }/>
+            <Route exact path="/notes" render={(routerProps) => <NotesPage {...routerProps} user={this.state.user} /> }/>
             {/* <Route path="/company/:id" component={<SingleCompany /> }/> */}
             <Route exact path="/about" render={(routerProps) => <About {...routerProps} /> }/>
           </Switch>

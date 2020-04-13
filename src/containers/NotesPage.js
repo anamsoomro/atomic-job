@@ -3,12 +3,12 @@ import Mobile from '../components/Mobile'
 import Title from '../components/Title'
 import NotesBrowser from '../components/NotesBrowser'
 
-export default class Companies extends React.Component {
+export default class NotesPage extends React.Component {
 
   render(){
     return(
       <div>
-        <Title title = "Your Companies" />
+        <Title title = "Your Notes" />
         <NotesBrowser user={this.props.user}/> 
         {/* <Mobile /> */}
       </div>
