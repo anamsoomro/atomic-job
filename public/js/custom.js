@@ -161,7 +161,7 @@ jQuery(function($) {
    	$("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
       // e.preventDefault();
 
-      var hash = this.hash;
+      // var hash = this.hash;
 
       // $('html, body').animate({
       //   'scrollTop': $(hash).offset().top
@@ -256,7 +256,14 @@ jQuery(function($) {
 			  placeholder: 'Compose an epic...',
 			  theme: 'snow'  // or 'bubble'
 			});
-		}
+    }
+    
+    // $(document).ready(function () {
+    //   $('#dtBasicExample').DataTable();
+    //   $('.dataTables_length').addClass('bs-select');
+    //   });
+
+
 
 	}
 	quillInit();

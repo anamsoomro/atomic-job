@@ -11,8 +11,8 @@ export default class Jobs extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      jobs : [], 
-      jobsDisplay: [], 
+      jobs : false, 
+      jobsDisplay: false, 
       user_id: props.user.id,
       showJob: null,
       search: ''                       
@@ -48,13 +48,9 @@ export default class Jobs extends React.Component {
   }
 
   handleSearch = (e) => {
-    // this.setState({search: e.target.value})
     let searchedJobs = this.state.jobs.filter(job => job.title.toLowerCase().includes(e.target.value.toLowerCase()))
-
     this.setState({jobsDisplay: searchedJobs})
   }
-
-
 
   addJob = (event) => {
     event.preventDefault()
@@ -78,9 +74,10 @@ export default class Jobs extends React.Component {
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
     .then(newJob => {
+      this.state.jobs.push(newJob)
       this.setState({
-        jobsDisplay: [...this.state.jobs, newJob],
-        showJob: newJob
+        jobs: this.state.jobs,
+        jobsDisplay: this.state.jobs
       })
     })
   }
@@ -95,6 +92,7 @@ export default class Jobs extends React.Component {
       body: JSON.stringify({ 
         title: job.title,
         company: job.company,
+        location: job.location,
         status: job.status,
         interview: job.interview
       })
@@ -127,11 +125,22 @@ export default class Jobs extends React.Component {
     })
   }
 
+  setFilter = (event) => {
+    let filter = event.target.dataset.filter
+    let filteredJobs
+    filter === "*"
+    ? filteredJobs = this.state.jobs
+    : filteredJobs = this.state.jobs.filter( job => job.status === filter )
+    this.setState({
+      jobsDisplay: filteredJobs
+    })
+  }
+
   render(){
     return (
       <div>
         <JobForm addJob={this.addJob}/>
-         <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch}/>
+         <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch} setFilter={this.setFilter}/>
         { this.state.showJob 
         ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
         : null }
