@@ -5,59 +5,41 @@ export default class NoteModalShow extends React.Component {
   constructor(){
     super()
     this.state = {
-      title: "",
-      content: "",
-      category: "",
-      id: ""
+      display: "block"
     }
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
 
-  handleSubmit = () => {
-    this.props.editNote(this.state)
-  }
 
-  handleDelete = () => {
-    this.props.deleteNote(this.props.note)
-  }
+  handleClose = () => this.setState({display: "none"})
 
-  componentDidMount(){
-    this.setState({
-      title: this.props.note.title,
-      content: this.props.note.content, 
-      category: this.props.note.category,
-      id: this.props.note.id
-    })
-  }
+
+  textareaHeigth = () =>  this.props.note?((this.props.note.content.length / 30 + 2) + "em"): "3em"
+  
 
   render(){
     return(
-      <div className="modal fade" id="show-note">
+      <div className="modal fade show" style={{display: this.state.display}} id="show-note">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <input type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <input type="text" name="title" value={this.props.note.title} onChange={this.props.handleChange}/>
+              <button type="button" className="close"  >
+                <span onClick = {this.handleClose}>&times;</span>
               </button>
             </div>
             <div className="modal-body">
-              <input type="text" name="content" value={this.state.content} onChange={this.handleChange}/>
+              <textarea className = "big-text-area" style = {{height: this.textareaHeigth()}} name="content" value={this.props.note.content} onChange={this.props.handleChange}/>
             </div>
             <div className="modal-footer">
               <label>Category:</label>
-              <select name="category" value={this.state.category} onChange={this.handleChange}>
+              <select name="category" value={this.props.note.category} onChange={this.props.handleChange}>
                 <option value="event"> Event </option>
                 <option value="lead"> Lead </option>
                 <option value="company"> Company </option>
               </select>
-              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.handleSubmit}>Save</button>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleDelete}>Delete</button>
+              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.props.editNote}>Save</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.props.deleteNote}>Delete</button>
             </div>
           </div>
         </div>
