@@ -199,7 +199,7 @@ export default class JobModalShow extends React.Component {
                   <label className="input-group-text" htmlFor="inputGroupSelect01">Status</label>
                 </div>
                 <select className="custom-select" name="status" id="inputGroupSelect01" value={this.state.job.status} onChange={this.handleChange}>
-                  <option name="status" value="apply">Apply</option>
+                  <option name="status" value="Not Applied">Not Applied</option>
                   <option name="status" value="follow-up">Follow-Up</option>
                   <option name="status" value="closed">Closed</option>
                 </select>

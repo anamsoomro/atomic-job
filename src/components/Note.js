@@ -46,17 +46,17 @@ export default class Note extends React.Component {
         {
           !this.state.editing
           ? <li class="d-flex align-items-start mb-2" onClick={this.handleEdit}>
-              <span class="icon-check_circle mr-2 text-muted"></span>
+              <span class="icon-dot mr-2 text-muted"></span>
               <span>{this.props.note.content}</span>
             </li>
           : <li class="d-flex align-items-start mb-2">
-              <span class="icon-check_circle mr-2 text-muted"></span>
+              <span class="icon-dot mr-2 text-muted"></span>
               <span>
                 <input type="text" 
                   value={this.state.note.content} 
                   onChange={ (e) => this.handleChange(e)}/>
-                <button onClick={this.handleSubmit}>o</button>
-                <button onClick={() => this.props.deleteNote(this.props.note)}>x</button>
+                <button onClick={this.handleSubmit}><span className="icon-check"></span></button>
+                <button onClick={() => this.props.deleteNote(this.props.note)}><span className="icon-trash mr-1"></span></button>
               </span>
             </li>
         }

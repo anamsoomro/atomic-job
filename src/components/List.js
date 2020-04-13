@@ -18,7 +18,7 @@ export default class List extends React.Component{
             <span className="icon-room"></span> {item.location}
           </div>
           <div className="job-listing-meta">
-            <span className="badge badge-danger">{item.status}</span>
+            <span className="badge badge-info">{item.status}</span>
           </div>
         </div>
     </li>
@@ -31,7 +31,7 @@ export default class List extends React.Component{
       <section className="site-section pt-0">
         <div className="container">
           <div className="mb-5">
-           <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Jobs Tracking</h3>
+           <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-eye fill mr-2"></span>Jobs Tracking</h3>
           </div>
         <div className="md-form mt-0 mb-4">
           <input onChange={this.props.handleSearch} className="form-control" type="text" placeholder="Search" aria-label="Search"/>

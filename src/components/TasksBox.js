@@ -7,7 +7,7 @@ export default class TasksBox extends React.Component {
   render(){
     return(
         <div className="mb-5">
-          <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Tasks</h3>
+          <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-list task mr-3"></span>Tasks</h3>
           <ul className="list-unstyled m-0 p-0">
             {this.props.tasks.map (task => 
               <Task 
@@ -22,7 +22,7 @@ export default class TasksBox extends React.Component {
               <span>
                 <form onSubmit={(e)=> this.props.addTask(e, this.props.note)} >
                   <input type="text" placeholder="new task"/>
-                  <input type="submit" value="+"/>
+                  <button type="submit" className= "btn btn-primary">Add</button>
                 </form>
               </span>
             </li>
