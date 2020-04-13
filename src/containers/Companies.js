@@ -8,7 +8,7 @@ export default class Companies extends React.Component {
   render(){
     return(
       <div>
-        <Title title = "Your Companies" />
+        <Title title = "Notes" />
         <NotesBrowser user={this.props.user}/> 
         {/* <Mobile /> */}
       </div>

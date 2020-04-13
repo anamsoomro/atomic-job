@@ -34,7 +34,7 @@ export default class List extends React.Component{
            <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Jobs Tracking</h3>
           </div>
         <div className="md-form mt-0 mb-4">
-          <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>
+          <input onChange={this.props.handleSearch} className="form-control" type="text" placeholder="Search" aria-label="Search"/>
         </div>
           {/* <div className="row mb-5 justify-content-center">
             <div className="col-md-7 text-center">
