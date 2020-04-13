@@ -51,7 +51,7 @@ export default class Task extends React.Component {
         {/* <div className="input-group mb-3">
           <div className="input-group-prepend">
             <div className="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input"/>
+              <input type="checkbox" aria-label="checkbox for following text input"/>
             </div>
           </div>
           <input type="text" className="form-control" aria-label="Text input with checkbox"
@@ -80,8 +80,8 @@ export default class Task extends React.Component {
                   value={this.state.task.item} 
                   onChange={this.handleChange}
                   style={{width: "60%"}} />
-                <button onClick={this.handleSubmit}>o</button>
-                <button onClick={() => this.props.deleteTask(this.props.task)}>x</button>
+                <button  onClick={this.handleSubmit}><span className="icon-check"></span></button>
+                <button onClick={() => this.props.deleteTask(this.props.task)}><span className="icon-trash mr-1"></span></button>
               </span>
             </li>
           }

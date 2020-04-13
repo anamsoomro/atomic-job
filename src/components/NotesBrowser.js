@@ -44,15 +44,28 @@ export default class NotesBrowser extends React.Component{
   }
 
   showNoteCard = (note) => {
-    return (
+    let icon= ''
+    switch(note.category){
+      case 'event':
+        icon = "icon-calendar d-block"
+        break;
+      case 'lead':
+        icon = "icon-exclamation-triangle d-block"
+        break;
+      case 'company':
+        icon = "icon-briefcase d-block"
+        break;
+    }
+      
+      return(
       <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" key={note.id} data-toggle="modal" data-target="#show-note" data-category={note.category} onClick={() => this.setShowNote(note)}>
         <div  className="block__16443 text-center d-block">
-          <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
+          <span className="custom-icon mx-auto"><span className= {`${icon}`} ></span></span>
           <h3>{note.title}</h3>
           <p>{note.content}</p>
         </div>
       </div>
-    )
+      )
   }
 
   setShowNote = (note) => {
@@ -150,7 +163,7 @@ export default class NotesBrowser extends React.Component{
             <div  className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" data-toggle="modal" data-target="#create-note" >
               <div>
                 <div href="service-single.html" className="block__16443 text-center d-block">
-                  <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
+                  <span className="custom-icon mx-auto"><span className="icon-note d-block"></span></span>
                   <h3>New Note </h3>
                   <p>Add Notes About Events, Leads or Companies</p>
                 </div>

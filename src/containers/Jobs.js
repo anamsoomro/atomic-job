@@ -69,7 +69,7 @@ export default class Jobs extends React.Component {
         company: event.target[1].value,
         location: event.target[2].value,
         url: event.target[3].value,
-        status: "apply",
+        status: "Not Applied",
         interview: "false",
         user_id: this.state.user_id
       })
