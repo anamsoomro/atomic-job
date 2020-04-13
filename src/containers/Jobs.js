@@ -14,7 +14,8 @@ export default class Jobs extends React.Component {
       jobs : [], 
       jobsDisplay: [], 
       user_id: props.user.id,
-      showJob: null                       
+      showJob: null,
+      search: ''                       
     }
   }
 
@@ -45,6 +46,15 @@ export default class Jobs extends React.Component {
       showJob: null
     })
   }
+
+  handleSearch = (e) => {
+    // this.setState({search: e.target.value})
+    let searchedJobs = this.state.jobs.filter(job => job.title.toLowerCase().includes(e.target.value.toLowerCase()))
+
+    this.setState({jobsDisplay: searchedJobs})
+  }
+
+
 
   addJob = (event) => {
     event.preventDefault()
@@ -121,7 +131,7 @@ export default class Jobs extends React.Component {
     return (
       <div>
         <JobForm addJob={this.addJob}/>
-        <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
+         <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch}/>
         { this.state.showJob 
         ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
         : null }

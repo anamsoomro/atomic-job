@@ -32,7 +32,7 @@ export default class JobForm extends React.Component{
                     <input type="text" className="form-control form-control-lg" placeholder="Link..."></input>
                   </div>
                   <div className="span2 mr-4">
-                    <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Search Job</button>
+                    <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Add Job</button>
                   </div>
                 </div>
                 {/* <div className="row">
