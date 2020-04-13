@@ -6,7 +6,7 @@ import React from 'react'
 // import LogoList from '../components/LogosList'
 // import Carousel from '../components/Carousel'
 // import Mobile from '../components/Mobile'
-import Jobs from '../containers/Jobs'
+// import Jobs from '../containers/Jobs'
 import UserTasks from "../components/UserTasks"
 import Title from '../components/Title'
 

@@ -39,7 +39,7 @@ export default class Navbar extends React.Component{
               <ul className="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
                 <li><a href="/" className="nav-link active"> Home</a></li>
                 <li><a href="/jobs">Jobs</a></li>
-                <li><a href="/companies">Notes</a></li>
+                <li><a href="/notes">Notes</a></li>
                 <li><a href="/about">About</a></li>
                 <li className="d-lg-none"><a href="/login">Log In</a></li>
               </ul>

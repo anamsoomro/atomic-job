@@ -3,7 +3,7 @@ import Mobile from '../components/Mobile'
 import Title from '../components/Title'
 import NotesBrowser from '../components/NotesBrowser'
 
-export default class Companies extends React.Component {
+export default class NotesPage extends React.Component {
 
   render(){
     return(

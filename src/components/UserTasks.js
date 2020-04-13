@@ -1,6 +1,5 @@
 import React from "react"
 import TasksBox from "./TasksBox"
-import Title from "../components/Title"
 
 export default class UserTasks extends React.Component {
 

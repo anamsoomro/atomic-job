@@ -80,7 +80,7 @@ export default class Jobs extends React.Component {
     .then(newJob => {
       this.setState({
         jobsDisplay: [...this.state.jobs, newJob],
-        showJob: newJob
+        // showJob: newJob
       })
     })
   }
@@ -95,6 +95,7 @@ export default class Jobs extends React.Component {
       body: JSON.stringify({ 
         title: job.title,
         company: job.company,
+        location: job.location,
         status: job.status,
         interview: job.interview
       })
