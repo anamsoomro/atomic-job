@@ -9,7 +9,8 @@ export default class NotesBrowser extends React.Component{
     this.state = {
       notes: [],
       notesDisplay: [],
-      showNote: null
+      showNote: null,
+      filter: null 
     } 
   }
 
@@ -30,6 +31,18 @@ export default class NotesBrowser extends React.Component{
     })
   }
 
+  setFilter = (event) => {
+    let filter = event.target.dataset.filter
+    let filteredNotes
+    filter === "*"
+    ? filteredNotes = this.state.notes 
+    : filteredNotes = this.state.notes.filter(note => note.category === filter)
+    this.setState({
+      filter: event.target.dataset.filter,
+      notesDisplay: filteredNotes
+    })
+  }
+
   showNoteCard = (note) => {
     return (
       <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" key={note.id} data-toggle="modal" data-target="#show-note" data-category={note.category} onClick={() => this.setShowNote(note)}>
@@ -44,7 +57,6 @@ export default class NotesBrowser extends React.Component{
 
   setShowNote = (note) => {
     // not sure you why you have to double click on card the first time load page 
-    console.log("setShowNote", note)
     this.setState({
       showNote: note
     })
@@ -120,22 +132,18 @@ export default class NotesBrowser extends React.Component{
   render(){
     return(
 
-      <section className="site-section services-section bg-light block__62849" id="next-section">
+      <section className="site-section services-section bg-light block__62849 pt-5" id="next-section">
         <div className="container">
 
           {/* not sure how to make data-filter work tbh  */}
           <div className="row justify-content-center mb-5" data-aos="fade-up">
             <div id="filters" className="filters text-center button-group col-md-7">
-              <button className="btn btn-primary active" data-filter="*">All</button>
-              <button className="btn btn-primary" data-filter="event">Events</button>
-              <button className="btn btn-primary" data-filter="lead">Leads</button>
-              <button className="btn btn-primary" data-filter="company">Companies</button>
+              <button className="btn btn-primary" data-filter="*" onClick={this.setFilter}>All</button>
+              <button className="btn btn-primary" data-filter="event" onClick={this.setFilter}>Events</button>
+              <button className="btn btn-primary" data-filter="lead" onClick={this.setFilter}>Leads</button>
+              <button className="btn btn-primary" data-filter="company" onClick={this.setFilter}>Companies</button>
             </div>
           </div>  
-
-
-          
-
 
           <div className="row" >
             {/* Create a New Note*/}

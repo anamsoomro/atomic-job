@@ -4,7 +4,7 @@ export default class Title extends React.Component{
 
   render(){
     return(
-      <section className="section-hero overlay inner-page bg-image" style={{"background-image": "url('images/hero_1.jpg')"}} id="home-section">
+      <section className="section-hero overlay inner-page bg-image" style={{"backgroundImage": "url('images/hero_1.jpg')"}} id="home-section">
       <div className="container">
         <div className="row">
           <div className="col-md-7">
