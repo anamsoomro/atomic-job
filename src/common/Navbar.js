@@ -2,6 +2,20 @@ import React from 'react'
 
 export default class Navbar extends React.Component{
 
+
+  renderUser = () => {
+    if (this.props.user){
+      return(
+        <button onClick={this.props.handleLogout} className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-user-circle"></span> {this.props.user.name}</button>
+      )
+    }
+    else{
+      return(
+        <a href="/login" className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-key"></span>Log In</a>
+      )
+    }
+  }
+
   render(){
     return(
       <div>
@@ -15,10 +29,6 @@ export default class Navbar extends React.Component{
         <div className="site-mobile-menu-body">
         </div>
       </div> 
-     
-    
-
-    
       <header className="site-navbar mt-3">
         <div className="container-fluid">
           <div className="row align-items-center">
@@ -31,18 +41,15 @@ export default class Navbar extends React.Component{
                 <li><a href="/jobs">Jobs</a></li>
                 <li><a href="/companies">Companies</a></li>
                 <li><a href="/about">About</a></li>
-                
                 <li className="d-lg-none"><a href="/login">Log In</a></li>
               </ul>
-            </nav>
-            
+            </nav>   
             <div className="right-cta-menu text-right d-flex aligin-items-center col-6">
               <div className="ml-auto">
-                <a href="/login" className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-lock_outline"></span>Log In</a>
+                {this.renderUser()}
               </div>
               <a href="#" className="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span className="icon-menu h3 m-0 p-0 mt-2"></span></a>
             </div>
-
           </div>
         </div>
       </header>
@@ -51,11 +58,3 @@ export default class Navbar extends React.Component{
   }
 }
 
-// it is example of dropdown:
-// <li className="has-children">
-// <a href="job-listings.html">Job Listings</a>
-// <ul className="dropdown">
-//   <li><a href="job-single.html">Job Single</a></li>
-//   <li><a href="post-job.html">Post a Job</a></li>
-// </ul>
-// </li>

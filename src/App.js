@@ -37,6 +37,11 @@ export default class App extends React.Component {
     }
   }
 
+  handleLogout = () => {
+    localStorage.clear()
+    this.setState({user: false})
+  }
+
   handleLogin = (user) => this.setState({user})
 
   renderRoutes = () => {
@@ -51,13 +56,15 @@ export default class App extends React.Component {
             <Route exact path="/companies" render={(routerProps) => <Companies {...routerProps} user={this.state.user} /> }/>
             {/* <Route path="/company/:id" component={<SingleCompany /> }/> */}
             <Route exact path="/about" render={(routerProps) => <About {...routerProps} /> }/>
+            <Route exact path="/login" render={(routerProps) => <Home  {...routerProps} user={this.state.user}/> }/>
           </Switch>
         </BrowserRouter>
       )
     }
     else{
       return(
-        <Login handleLogin = {this.handleLogin}/>
+        <Login handleLogin = {this.handleLogin} user={this.state.user}/>
+          
       )
     }
  
@@ -66,7 +73,7 @@ export default class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Navbar /> 
+        <Navbar user = {this.state.user} handleLogout={this.handleLogout}/> 
           <div className="site-wrap">
           {this.renderRoutes()}
           </div>
