@@ -45,18 +45,19 @@ export default class App extends React.Component {
   handleLogin = (user) => this.setState({user})
 
   renderRoutes = () => {
-    if (this.state.user){
+    if (localStorage.user_id){
+      let user = {id: localStorage.user_id, name: localStorage.user_name}
       return(
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" render={(routerProps) => <Home  {...routerProps} user={this.state.user}/> }/>
-            <Route exact path="/jobs" render={(routerProps) => <Jobs {...routerProps} user={this.state.user} /> }/>
+            <Route exact path="/" render={(routerProps) => <Home  {...routerProps} user={user}/> }/>
+            <Route exact path="/jobs" render={(routerProps) => <Jobs {...routerProps} user={user} /> }/>
             {/* <Route path="/job/:id" component={<JobShow /> }/> */}
             <Route exact path="/job/new" render={(routerProps) => <JobForm {...routerProps} /> }/>
-            <Route exact path="/companies" render={(routerProps) => <Companies {...routerProps} user={this.state.user} /> }/>
+            <Route exact path="/companies" render={(routerProps) => <Companies {...routerProps} user={user} /> }/>
             {/* <Route path="/company/:id" component={<SingleCompany /> }/> */}
             <Route exact path="/about" render={(routerProps) => <About {...routerProps} /> }/>
-            <Route exact path="/login" render={(routerProps) => <Home  {...routerProps} user={this.state.user}/> }/>
+            <Route exact path="/login" render={(routerProps) => <Home  {...routerProps} user={user}/> }/>
           </Switch>
         </BrowserRouter>
       )

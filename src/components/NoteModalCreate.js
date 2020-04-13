@@ -33,7 +33,7 @@ export default class NoteModalCreate extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <input type="text" name="content" placeholder="your notes... " onChange={this.handleChange}/>
+              <textarea className = "big-text-area"  name="content" placeholder="your notes... " onChange={this.handleChange}/>
               </div>
               <div className="modal-footer">
                 <label>Category:</label>

@@ -60,6 +60,7 @@ export default class NotesBrowser extends React.Component{
     this.setState({
       showNote: note
     })
+
   }
 
   newNote = (note) => {
@@ -86,18 +87,14 @@ export default class NotesBrowser extends React.Component{
     })
   }
 
-  editNote = (note) => {
-    fetch(`http://localhost:3000/user_notes/${note.id}`, {
+  editNote = () => {
+    fetch(`http://localhost:3000/user_notes/${this.state.showNote.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`
       },
-      body: JSON.stringify({
-        title: note.title,
-        content: note.content,
-        category: note.category
-      })
+      body: JSON.stringify(this.state.showNote)
     })
     .then(resp => resp.json())
     .then(updatedNote => {
@@ -111,8 +108,8 @@ export default class NotesBrowser extends React.Component{
     })
   }
 
-  deleteNote = (note) => {
-    fetch(`http://localhost:3000/user_notes/${note.id}`,{
+  deleteNote = () => {
+    fetch(`http://localhost:3000/user_notes/${this.state.showNote.id}`,{
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.token}`
@@ -120,6 +117,7 @@ export default class NotesBrowser extends React.Component{
     })
     .then(resp => resp.json())
     .then(remainingNotes => {
+      debugger
       // or should i have the back end not render anything back
       // just remove element from array 
       this.setState({
@@ -127,6 +125,11 @@ export default class NotesBrowser extends React.Component{
         notesDisplay: remainingNotes
       })
     })
+  }
+
+
+  handleChange = (event) => {
+    this.setState({showNote: {...this.state.showNote, [event.target.name]: event.target.value}})
   }
 
   render(){
@@ -162,8 +165,9 @@ export default class NotesBrowser extends React.Component{
         </div>
         <NoteModalCreate  newNote={this.newNote}  />
         {
+          
           this.state.showNote
-          ? <NoteModalShow note={this.state.showNote} editNote={this.editNote} deleteNote={this.deleteNote}/>
+          ? <NoteModalShow note={this.state.showNote} handleChange = {this.handleChange} editNote={this.editNote} deleteNote={this.deleteNote}/>
           : null
         }
       </section>

@@ -51,6 +51,8 @@ export default class Login extends React.Component {
       .then(resp => resp.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
+        localStorage.setItem("user_id", data.user.id)
+        localStorage.setItem("user_name", data.user.name)
         this.props.handleLogin(data.user)
       })
   }
