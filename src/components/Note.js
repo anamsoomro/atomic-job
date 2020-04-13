@@ -7,7 +7,14 @@ export default class Note extends React.Component {
     super()
     this.state = {
       editing: false,
+      note: "",
     }
+  }
+
+  componentDidMount(){
+    this.setState({
+      note: this.props.note
+    })
   }
   
   handleEdit = () => {
@@ -16,9 +23,20 @@ export default class Note extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleChange = (event) => {
+    this.setState({
+      note: {...this.state.note, content: event.target.value}
+    })
+  }
+  
+
+  handleSubmit = () => {
     this.state.editing = false
-    this.props.editNote(e, this.props.note)
+    this.props.editNote(this.state.note )
+  }
+
+  handleDelete = () => {
+    this.props.deleteNote(this.state.note)
   }
 
 
@@ -26,24 +44,27 @@ export default class Note extends React.Component {
     return ( 
       <div> 
         {
-          this.state.editing
-          ? (<li className="list-group-item" >
-              <input type="text" 
-                value={this.props.note.content} 
-                onChange={ (e) => this.props.handleNoteChange(e, this.props.note)}
-                style={{width: "60%"}} />
-              <button onClick={(e) => this.handleSubmit(e)}>submit</button>
-              <button onClick={() => this.props.deleteNote(this.props.note)}>dlt</button>
-            </li>)
-          : (<li className="list-group-item">
-              {this.props.note.content}
-              <button onClick={this.handleEdit}>edit</button>
-              <button onClick={() => this.props.deleteNote(this.props.note)}>dlt</button>
-            </li>)
+          !this.state.editing
+          ? <li class="d-flex align-items-start mb-2" onClick={this.handleEdit}>
+              <span class="icon-check_circle mr-2 text-muted"></span>
+              <span>{this.props.note.content}</span>
+            </li>
+          : <li class="d-flex align-items-start mb-2">
+              <span class="icon-check_circle mr-2 text-muted"></span>
+              <span>
+                <input type="text" 
+                  value={this.state.note.content} 
+                  onChange={ (e) => this.handleChange(e)}/>
+                <button onClick={this.handleSubmit}>o</button>
+                <button onClick={() => this.props.deleteNote(this.props.note)}>x</button>
+              </span>
+            </li>
         }
       </div>
     )
   }
 
 }
+
+
 

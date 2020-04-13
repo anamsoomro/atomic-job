@@ -1,9 +1,11 @@
 import React from 'react'
-import JobShow from "../components/JobShow"
+// import JobShow from "../components/JobShow"
 // import JobList from "../void/JobList"
 import List from '../components/List'
 import Title from '../components/Title'
 import JobForm from "../components/JobForm"
+import JobModalShow from '../components/JobModalShow'
+
 
 export default class Jobs extends React.Component {
 
@@ -13,16 +15,11 @@ export default class Jobs extends React.Component {
       jobs : [], 
       jobsDisplay: [], 
       user_id: props.user.id,
-      showJob: null
+      showJob: null                       
     }
   }
 
-
-  // {"user":{"name":"dumdum","id":22},"jwt":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMn0.iTTIBEfmpXOaoj3G0A6Tm_iuU2FKAl7VIRD7RpGhVYc"}
-
   componentDidMount(){
-    // we can pass username or user_id to the backend 
-    // HM ITS GETTING THAT I AM UNAUTHORIZED
     fetch(`http://localhost:3000/users/${this.state.user_id}/jobs`, {
       method: "GET", 
       headers: {
@@ -34,28 +31,20 @@ export default class Jobs extends React.Component {
       this.setState({
         jobs: jobData,
         jobsDisplay: jobData,
-        // showJob: jobData[0]
       })
     })
   }
   
   handleShowJob = (job) => {
-    console.log("job", job)
     this.setState({
       showJob: job
     })
-
-
-    
   }
 
   handleBack = () => {
-    console.log("ASDfasdf")
     this.setState({
       showJob: null
     })
-
-
   }
 
   addJob = (event) => {
@@ -87,20 +76,57 @@ export default class Jobs extends React.Component {
     })
   }
 
+  editJob = (job) => {
+    fetch(`http://localhost:3000/jobs/${job.id}`,{
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({ 
+        title: job.title,
+        company: job.company,
+        status: job.status,
+        interview: job.interview
+      })
+    })
+    .then(resp => resp.json())
+    .then(updatedJob => {
+      let updatedJobList = this.state.jobs.map(job => 
+        job.id === updatedJob.id ? job = updatedJob : job
+      )
+      this.setState({
+        jobs: updatedJobList,
+        jobsDisplay: updatedJobList
+      })
+    })
+  }
+
+  deleteJob = (job) => {
+    fetch(`http://localhost:3000/jobs/${job.id}`,{
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(remainingJobs => {
+      this.setState({
+        jobs: remainingJobs,
+        jobsDisplay: remainingJobs
+      })
+    })
+  }
 
   render(){
     return (
       <div>
         <Title title = "Your job listings" />
-        {/* <List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/> */}
-        {
-        this.state.showJob
-        // ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> : null
-        ? <JobShow job={this.state.showJob} handleBack={this.handleBack}/> 
-        : (<List title = "Your current job listings" items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>)
-        }
+        <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
         <JobForm addJob={this.addJob}/>
-
+        { this.state.showJob 
+        ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
+        : null }
       </div>
     )
   }

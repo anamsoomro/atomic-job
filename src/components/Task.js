@@ -7,7 +7,14 @@ export default class Task extends React.Component {
     super()
     this.state = {
       editing: false,
+      task: ""
     }
+  }
+
+  componentDidMount(){
+    this.setState({
+      task: this.props.task
+    })
   }
   
   handleEdit = () => {
@@ -16,9 +23,15 @@ export default class Task extends React.Component {
     })
   }
 
+  handleChange = (event) => {
+    this.setState({
+      task: {...this.state.task, item: event.target.value}
+    })
+  }
+
   handleSubmit = (e) => {
     this.state.editing = false
-    this.props.editTask(e, this.props.task)
+    this.props.editTask(this.state.task)
   }
 
   toggleClosed = (e, task) => {
@@ -26,33 +39,10 @@ export default class Task extends React.Component {
     this.props.editTask(e, task)
   }
 
+
   render(){
     return ( 
       <div> 
-        {
-          this.state.editing
-          ? (<li className="list-group-item" >
-              <input type="checkbox" 
-                checked={this.props.task.closed} 
-                onChange={this.props.editTask}/>
-              <input type="text" 
-                value={this.props.task.item} 
-                onChange={ (e) => this.props.handleTaskChange(e, this.props.task)}
-                style={{width: "60%"}} />
-              <button onClick={(e) => this.handleSubmit(e)}>submit</button>
-              <button  onClick={() => this.props.deleteTask(this.props.task)}>dlt</button>
-            </li>)
-          : (<li className="list-group-item">
-              <input type="checkbox" 
-                checked={this.props.task.closed} 
-                onChange={(e) => this.toggleClosed(e, this.props.task)}/>
-              {this.props.task.item}
-              <button onClick={this.handleEdit}>edit</button>
-              <button onClick={() => this.props.deleteTask(this.props.task)}>dlt</button>
-            </li>)
-        }
-
-        {/* NOT SURE HOW TO/WHEN TO PATCH TO DATABASE  */}
         {/* <div className="input-group mb-3">
           <div className="input-group-prepend">
             <div className="input-group-text">
@@ -63,6 +53,25 @@ export default class Task extends React.Component {
             value={this.props.task.item} onChange={ (e) => this.props.handleEditChange(e, this.props.task)}
           />
         </div> */}
+          {!this.state.editing
+          ? 
+            <li className="d-flex align-items-start mb-2" onClick={this.handleEdit}>
+              <span className="icon-check_circle mr-2 text-muted"></span>
+              <span>{this.props.task.item}</span>
+            </li>
+            
+          : <li className="d-flex align-items-start mb-2">
+              <span className="icon-check_circle mr-2 text-muted"></span>
+              <span>
+                <input type="text" 
+                  value={this.state.task.item} 
+                  onChange={this.handleChange}
+                  style={{width: "60%"}} />
+                <button onClick={this.handleSubmit}>o</button>
+                <button onClick={() => this.props.deleteTask(this.props.task)}>x</button>
+              </span>
+            </li>
+          }
       </div>
     )
   }

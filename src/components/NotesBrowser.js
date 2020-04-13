@@ -32,7 +32,7 @@ export default class NotesBrowser extends React.Component{
 
   showNoteCard = (note) => {
     return (
-      <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" key={note.id} data-toggle="modal" data-target="#show-note" onClick={() => this.setShowNote(note)}>
+      <div className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" key={note.id} data-toggle="modal" data-target="#show-note" data-category={note.category} onClick={() => this.setShowNote(note)}>
         <div  className="block__16443 text-center d-block">
           <span className="custom-icon mx-auto"><span className="icon-magnet d-block"></span></span>
           <h3>{note.title}</h3>
@@ -119,8 +119,24 @@ export default class NotesBrowser extends React.Component{
 
   render(){
     return(
+
       <section className="site-section services-section bg-light block__62849" id="next-section">
         <div className="container">
+
+          {/* not sure how to make data-filter work tbh  */}
+          <div className="row justify-content-center mb-5" data-aos="fade-up">
+            <div id="filters" className="filters text-center button-group col-md-7">
+              <button className="btn btn-primary active" data-filter="*">All</button>
+              <button className="btn btn-primary" data-filter="event">Events</button>
+              <button className="btn btn-primary" data-filter="lead">Leads</button>
+              <button className="btn btn-primary" data-filter="company">Companies</button>
+            </div>
+          </div>  
+
+
+          
+
+
           <div className="row" >
             {/* Create a New Note*/}
             <div  className="col-6 col-md-6 col-lg-4 mb-4 mb-lg-5" data-toggle="modal" data-target="#create-note" >

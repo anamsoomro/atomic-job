@@ -1,6 +1,6 @@
 import React from 'react'
-import NotesBox from './NotesBox'
-import TasksBox from './TasksBox'
+import NotesBox from '../components/NotesBox'
+import TasksBox from '../components/TasksBox'
 
 
 export default class JobShow extends React.Component {

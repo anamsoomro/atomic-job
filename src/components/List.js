@@ -1,36 +1,32 @@
 import React from 'react'
 
+
 export default class List extends React.Component{
 
   renderRow = (item) => {
+    console.log("item", item)
     return(
-      <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" onClick={()=>this.props.handleShowJob(item)}>
-      {/* <a href={item.url}></a>  */}
-      <div className="job-listing-logo">
-        <img src= {item.logo} alt={`${item.title} - ${item.company}`} className="img-fluid"></img>
-      </div>
-
-      <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-        <div className="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-          <h2>{item.title}</h2>
-          <strong>{item.company}</strong>
+      <li className="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center" data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
+        <div className="job-listing-logo">
+          <img src= {item.logo} alt={`${item.title} - ${item.company}`} className="img-fluid"></img>
         </div>
-        <div className="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-          <span className="icon-room"></span> {item.location}
+        <div className="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+          <div className="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+            <h2>{item.title}</h2>
+            <strong>{item.company}</strong>
+          </div>
+          <div className="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+            <span className="icon-room"></span> {item.location}
+          </div>
+          <div className="job-listing-meta">
+            <span className="badge badge-danger">{item.status}</span>
+          </div>
         </div>
-        <div className="job-listing-meta">
-          <span className="badge badge-danger">{item.status}</span>
-        </div>
-      </div>
     </li>
     )
-
-    
   }
 
   render(){
-
-
     return(
       
       <section className="site-section">
