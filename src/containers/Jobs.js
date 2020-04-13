@@ -48,9 +48,7 @@ export default class Jobs extends React.Component {
   }
 
   handleSearch = (e) => {
-    // this.setState({search: e.target.value})
     let searchedJobs = this.state.jobs.filter(job => job.title.toLowerCase().includes(e.target.value.toLowerCase()))
-
     this.setState({jobsDisplay: searchedJobs})
   }
 
@@ -78,9 +76,10 @@ export default class Jobs extends React.Component {
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
     .then(newJob => {
+      this.state.jobs.push(newJob)
       this.setState({
-        jobsDisplay: [...this.state.jobs, newJob],
-        // showJob: newJob
+        jobs: this.state.jobs,
+        jobsDisplay: this.state.jobs
       })
     })
   }

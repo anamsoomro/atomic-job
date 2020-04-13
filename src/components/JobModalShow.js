@@ -59,7 +59,6 @@ export default class JobModalShow extends React.Component {
   }
 
   handleSubmit = () => {
-    
     this.props.editJob(this.state.job)
     this.setState({
       editing: false
