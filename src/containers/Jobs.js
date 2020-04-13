@@ -120,10 +120,8 @@ export default class Jobs extends React.Component {
   render(){
     return (
       <div>
-
-        
-        <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
         <JobForm addJob={this.addJob}/>
+        <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob}/>
         { this.state.showJob 
         ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
         : null }

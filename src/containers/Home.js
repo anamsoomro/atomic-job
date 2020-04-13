@@ -22,8 +22,7 @@ export default class Home extends React.Component{
         
         <UserTasks user={this.props.user}/>
 
-        {/* this should be rendered as its own page*/}
-        <Jobs user={this.props.user}/> 
+        {/* <Jobs user={this.props.user}/>  */}
 
         {/* <Counters /> */}
         {/* <GreenCrossPiece /> */}
