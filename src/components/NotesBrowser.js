@@ -55,6 +55,8 @@ export default class NotesBrowser extends React.Component{
       case 'company':
         icon = "icon-briefcase d-block"
         break;
+      case 'misc':
+          icon = "icon-question d-block"
     }
       
       return(
@@ -158,6 +160,7 @@ export default class NotesBrowser extends React.Component{
               <button className="btn btn-primary" data-filter="event" onClick={this.setFilter}>Events</button>
               <button className="btn btn-primary" data-filter="lead" onClick={this.setFilter}>Leads</button>
               <button className="btn btn-primary" data-filter="company" onClick={this.setFilter}>Companies</button>
+              <button className="btn btn-primary" data-filter="misc" onClick={this.setFilter}>Misc</button>
             </div>
           </div>  
 

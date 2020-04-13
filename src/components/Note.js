@@ -46,11 +46,11 @@ export default class Note extends React.Component {
         {
           !this.state.editing
           ? <li class="d-flex align-items-start mb-2" onClick={this.handleEdit}>
-              <span class="icon-dot mr-2 text-muted"></span>
+              <span class="icon-stop fill mr-2 "></span>
               <span>{this.props.note.content}</span>
             </li>
           : <li class="d-flex align-items-start mb-2">
-              <span class="icon-dot mr-2 text-muted"></span>
+              <span class="icon-stop fill mr-2 "></span>
               <span>
                 <input type="text" 
                   value={this.state.note.content} 

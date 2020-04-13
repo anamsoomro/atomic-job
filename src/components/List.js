@@ -93,7 +93,7 @@ export default class List extends React.Component{
        ? (<section className="site-section pt-0 pb-0 mb-5">
             <div className="container">
               <div className="mb-5 mt-5" >
-                <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-rocket mr-3"></span>Jobs Tracking</h3>
+                <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-eye mr-3"></span>Jobs Tracking</h3>
               </div>
               <div className="md-form mt-0 mb-4">
                 <input className="form-control" type="text" placeholder="Search" aria-label="Search"/>

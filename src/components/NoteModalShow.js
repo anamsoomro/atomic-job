@@ -37,6 +37,9 @@ export default class NoteModalShow extends React.Component {
                 <option value="event"> Event </option>
                 <option value="lead"> Lead </option>
                 <option value="company"> Company </option>
+                <option value="misc"> Misc </option>
+                
+
               </select>
               <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.props.editNote}>Save</button>
               <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.props.deleteNote}>Delete</button>
