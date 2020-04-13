@@ -256,7 +256,14 @@ jQuery(function($) {
 			  placeholder: 'Compose an epic...',
 			  theme: 'snow'  // or 'bubble'
 			});
-		}
+    }
+    
+    // $(document).ready(function () {
+    //   $('#dtBasicExample').DataTable();
+    //   $('.dataTables_length').addClass('bs-select');
+    //   });
+
+
 
 	}
 	quillInit();
