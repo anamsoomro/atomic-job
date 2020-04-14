@@ -46,6 +46,8 @@ export default class UserTasks extends React.Component {
   }
 
   addTask = (event, task) => {
+    const trimmed = event.target[0].value.trim().length
+    if (trimmed !== 0) {
     event.preventDefault()
     let postObj = {
       method: "POST",
@@ -68,6 +70,10 @@ export default class UserTasks extends React.Component {
         tasks: this.state.tasks
       })
     })
+    } else {
+      event.preventDefault()
+      alert("Please enter your task")
+    }
   }
 
   deleteTask = (task) => {

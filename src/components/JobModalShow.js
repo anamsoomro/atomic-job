@@ -95,28 +95,33 @@ export default class JobModalShow extends React.Component {
 
 
   addNote = (event, note) => {
-    event.preventDefault()
-    let postObj = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`
-        },
-        body: JSON.stringify({
-          content: event.target[0].value,
-          job_id: this.props.job.id
+    const trimmed = event.target[0].value.trim().length
+    if (trimmed !== 0) {
+      event.preventDefault()
+      let postObj = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.token}`
+          },
+          body: JSON.stringify({
+            content: event.target[0].value,
+            job_id: this.props.job.id
+          })
+      }
+      event.target.reset()
+      fetch(`http://localhost:3000/notes`, postObj)
+      .then(resp => resp.json())
+      .then(newNote => {
+        this.state.notes.push(newNote)
+        this.setState({
+          notes: this.state.notes
         })
-    }
-    event.target.reset()
-    fetch(`http://localhost:3000/notes`, postObj)
-    .then(resp => resp.json())
-    .then(newNote => {
-      this.state.notes.push(newNote)
-      this.setState({
-        notes: this.state.notes
       })
-    })
-    
+    }else{
+      event.preventDefault()
+      alert('Please enter your note')
+    }
   }
 
   deleteNote = (note) => {
@@ -158,28 +163,34 @@ export default class JobModalShow extends React.Component {
   }
 
   addTask = (event, task) => {
-    event.preventDefault()
-    let postObj = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`
-      },
-      body: JSON.stringify({
-        item: event.target[0].value,
-        closed: false,
-        job_id: this.props.job.id
+    const trimmed = event.target[0].value.trim().length
+    if (trimmed !== 0) {
+      event.preventDefault()
+      let postObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          item: event.target[0].value,
+          closed: false,
+          job_id: this.props.job.id
+        })
+      }
+      event.target.reset()
+      fetch(`http://localhost:3000/job_tasks`, postObj)
+      .then(resp => resp.json())
+      .then(newTask => {
+        this.state.tasks.push(newTask)
+        this.setState({
+          tasks: this.state.tasks
+        })
       })
+    }else {
+      event.preventDefault()
+      alert('Please enter your task')
     }
-    event.target.reset()
-    fetch(`http://localhost:3000/job_tasks`, postObj)
-    .then(resp => resp.json())
-    .then(newTask => {
-      this.state.tasks.push(newTask)
-      this.setState({
-        tasks: this.state.tasks
-      })
-    })
   }
 
   deleteTask = (task) => {

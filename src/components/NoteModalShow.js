@@ -13,6 +13,16 @@ export default class NoteModalShow extends React.Component {
 
   handleClose = () => this.setState({display: "none"})
 
+  bothDelete = () => {
+    this.handleClose()
+    this.props.deleteNote()
+  }
+
+  bothSave = () => {
+    this.handleClose()
+    this.props.editNote()
+  }
+
 
   textareaHeigth = () =>  this.props.note?((this.props.note.content.length / 30 + 2) + "em"): "3em"
   
@@ -41,8 +51,8 @@ export default class NoteModalShow extends React.Component {
                 
 
               </select>
-              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.props.editNote}>Save</button>
-              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.props.deleteNote}>Delete</button>
+              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.bothSave} >Save</button>
+              <button type="button" className="btn btn-secondary" onClick={this.bothDelete}data-dismiss="modal" >Delete</button>
             </div>
           </div>
         </div>
