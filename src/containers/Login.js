@@ -41,23 +41,28 @@ export default class Login extends React.Component {
   }
 
   logUserIn = (e) => {
-    e.preventDefault()
-    fetch(`http://localhost:3000/login`, {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-      },
-      body: JSON.stringify(this.user())
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        localStorage.setItem("token", data.jwt)
-        localStorage.setItem("user_id", data.user.id)
-        localStorage.setItem("user_name", data.user.name)
-        this.props.handleLogin(data.user)
+      e.preventDefault()
+      fetch(`http://localhost:3000/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(this.user())
       })
-  }
+        .then(resp => resp.json())
+        .then(data => {
+          console.log(data)
+          if(!data["failure"]){
+            localStorage.setItem("token", data.jwt)
+            localStorage.setItem("user_id", data.user.id)
+            localStorage.setItem("user_name", data.user.name)
+            this.props.handleLogin(data.user)
+            }else {
+              alert("Your information does not match.")
+           }
+          }
+        )}
 
   user = () => {
     return {username: this.state.userName,

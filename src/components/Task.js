@@ -43,8 +43,7 @@ export default class Task extends React.Component {
     this.state.task.closed = !this.state.task.closed
     this.props.editTask(this.state.task)
   }
-
-
+  
   render(){
     return ( 
       <div> 
