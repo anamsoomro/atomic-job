@@ -15,7 +15,8 @@ export default class Jobs extends React.Component {
       jobsDisplay: false, 
       user_id: props.user.id,
       showJob: null,
-      search: ''                       
+      search: '',
+      sortAsc: true                      
     }
   }
 
@@ -52,6 +53,18 @@ export default class Jobs extends React.Component {
     this.setState({jobsDisplay: searchedJobs})
   }
 
+  handleSort = (e) => {
+    let sortBy = e.target.getAttribute("name")
+    let sorted
+    this.state.sortAsc
+    ? sorted = this.state.jobsDisplay.sort( (jobA, jobB) => jobA[sortBy] > jobB[sortBy] ? 1 : -1 )
+    : sorted = this.state.jobsDisplay.sort( (jobA, jobB) => jobA[sortBy] > jobB[sortBy] ? -1 : 1 )
+    this.setState({
+      sortAsc: !this.state.sortAsc,
+      jobsDisplay: sorted
+    })
+  } 
+
   addJob = (event) => {
     event.preventDefault()
     let postObject = {
@@ -74,6 +87,7 @@ export default class Jobs extends React.Component {
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
     .then(newJob => {
+      console.log("newJob posted", newJob)
       this.state.jobs ? this.state.jobs.push(newJob) :  this.state.jobs = [newJob]
       this.setState({
         jobs: this.state.jobs,
@@ -140,7 +154,7 @@ export default class Jobs extends React.Component {
     return (
       <div>
         <JobForm addJob={this.addJob}/>
-         <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch} setFilter={this.setFilter}/>
+         <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch} setFilter={this.setFilter} handleSort={this.handleSort}/>
         { this.state.showJob 
         ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
         : null }
