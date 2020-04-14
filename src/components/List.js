@@ -60,9 +60,9 @@ export default class List extends React.Component{
               <div className="row justify-content-center mb-5" data-aos="fade-up">
                 <div id="filters" className="filters text-center button-group col-md-7">
                   <button className="btn btn-primary" data-filter="*" onClick={this.props.setFilter}>All</button>
-                  <button className="btn btn-primary" data-filter="event" onClick={this.props.setFilter}>Not Applied</button>
-                  <button className="btn btn-primary" data-filter="lead" onClick={this.props.setFilter}>Follow-Up</button>
-                  <button className="btn btn-primary" data-filter="company" onClick={this.props.setFilter}>Closed</button>
+                  <button className="btn btn-primary" data-filter="Not Applied" onClick={this.props.setFilter}>Not Applied</button>
+                  <button className="btn btn-primary" data-filter="follow-up" onClick={this.props.setFilter}>Follow-Up</button>
+                  <button className="btn btn-primary" data-filter="closed" onClick={this.props.setFilter}>Closed</button>
                 </div>
               </div>  
 
