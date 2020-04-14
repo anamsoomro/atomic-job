@@ -49,6 +49,7 @@ export default class List extends React.Component{
     return(
       !!this.props.items
        ? (<section className="site-section pt-0 pb-0 mb-5">
+
             <div className="container">
               <div className="mb-5 mt-5" >
                 <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-eye mr-3"></span>Jobs Tracking</h3>
@@ -68,7 +69,6 @@ export default class List extends React.Component{
 
               <table className="table table-hover" width="100%" >
                 <thead>
-                  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
                   {/* <i class="fa fa-fw fa-sort"> for up and down arrows</i> */} 
                   {/* <i class="fa fa-sort-asc"> down arrow asc</i> */} 
                   {/* <i class="fa fa-sort-desc"> up arrrow desc </i> */} 

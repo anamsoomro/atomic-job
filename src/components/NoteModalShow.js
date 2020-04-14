@@ -44,10 +44,10 @@ export default class NoteModalShow extends React.Component {
             <div className="modal-footer">
               <label>Category:</label>
               <select name="category" value={this.props.note.category} onChange={this.props.handleChange}>
+                <option value="misc"> Misc </option>
                 <option value="event"> Event </option>
                 <option value="lead"> Lead </option>
                 <option value="company"> Company </option>
-                <option value="misc"> Misc </option>
                 
 
               </select>
