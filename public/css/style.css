@@ -1000,7 +1000,28 @@ h1, h2, h3, h4 {
   transition: .3s all ease;
   top: 0;
   position: relative;
-  text-decoration: none; }
+  /* text-decoration: none;  */
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 33em;
+  display: block;
+    }
+
+
+  .mess span {
+      display:block;
+      height: 20em;
+      position:relative;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+  }
+
+    
+
+
   .block__62849 .block__16443 .custom-icon {
     display: block;
     position: relative;

@@ -43,6 +43,20 @@ export default class NotesBrowser extends React.Component{
     })
   }
 
+  shortTheNote = (content) =>{
+    if (content.length < 300){
+      return content
+    }
+    else {
+      let shortValue = content.substring(0, content.indexOf(" ", 280))
+
+      if (shortValue.charAt(shortValue.length -1) === ",") {
+        shortValue = shortValue.substring(0, shortValue.length -2)
+      }
+      return shortValue + "..."
+    }
+  }
+
   showNoteCard = (note) => {
     let icon= ''
     switch(note.category){
@@ -64,7 +78,10 @@ export default class NotesBrowser extends React.Component{
         <div  className="block__16443 text-center d-block">
           <span className="custom-icon mx-auto"><span className= {`${icon}`} ></span></span>
           <h3>{note.title}</h3>
-          <p>{note.content}</p>
+          <div className="mess">
+            <span>{this.shortTheNote(note.content)}</span>
+          </div>
+          {/* <p className="note-text">{note.content}</p> */}
         </div>
       </div>
       )
