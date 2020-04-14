@@ -121,6 +121,7 @@ export default class JobModalShow extends React.Component {
     }else{
       event.preventDefault()
       alert('Please enter your note')
+      event.target.reset()
     }
   }
 
@@ -190,6 +191,7 @@ export default class JobModalShow extends React.Component {
     }else {
       event.preventDefault()
       alert('Please enter your task')
+      event.target.reset()
     }
   }
 

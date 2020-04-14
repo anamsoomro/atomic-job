@@ -73,6 +73,7 @@ export default class UserTasks extends React.Component {
     } else {
       event.preventDefault()
       alert("Please enter your task")
+      event.target.reset()
     }
   }
 
