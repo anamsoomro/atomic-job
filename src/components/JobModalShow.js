@@ -221,6 +221,7 @@ export default class JobModalShow extends React.Component {
                     <h2> <input type="text" name="title" value={this.state.job.title} placeholder="enter job title..." onChange={this.handleChange}/> </h2>
                     <h4> <input type="text" name="company" value={this.state.job.company} placeholder="enter copmany..." onChange={this.handleChange}/> </h4>
                     <h6> <input type="text" name="location" value={this.state.job.location} placeholder="enter location..." onChange={this.handleChange}/> </h6>
+                    <h6> <input type="text" name="url" value={this.state.job.url} placeholder="enter url..." onChange={this.handleChange}/> </h6>
                     {/* add one for link */}
                     <h6 onClick={this.handleSubmit}> <span className="icon-check"></span>  </h6>
                   </header>)
