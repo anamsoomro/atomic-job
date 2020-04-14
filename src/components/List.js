@@ -74,11 +74,11 @@ export default class List extends React.Component{
                   {/* <i class="fa fa-sort-desc"> up arrrow desc </i> */} 
                   <tr>
                     <th className="th-sm"></th>
-                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Company</th>
-                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Position</th>
-                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Location</th>
-                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Date Applied</th>
-                    <th className="th-sm"><i class="fa fa-fw fa-sort"></i>Status</th>
+                    <th className="th-sm" ><i className="fa fa-fw fa-sort" name="company" onClick={this.props.handleSort}></i>Company</th>
+                    <th className="th-sm" ><i className="fa fa-fw fa-sort" name="title" onClick={this.props.handleSort}></i>Position</th>
+                    <th className="th-sm" ><i className="fa fa-fw fa-sort" name="location" onClick={this.props.handleSort}></i>Location</th>
+                    <th className="th-sm" ><i className="fa fa-fw fa-sort" name="dateApplied" onClick={this.props.handleSort}></i>Date Applied</th>
+                    <th className="th-sm" ><i className="fa fa-fw fa-sort" name="status" onClick={this.props.handleSort}></i>Status</th>
                   </tr>
                 </thead>
                 <tbody>
