@@ -1,6 +1,7 @@
 import React from "react"
 import NotesBox from "../components/NotesBox"
 import TasksBox from "../components/TasksBox"
+// import DatePicker from "../components/DatePicker"
 
 export default class JobModalShow extends React.Component {
 
@@ -12,6 +13,7 @@ export default class JobModalShow extends React.Component {
         company: "",
         status: "",
         interview: "",
+        // dateApplied: 
       },
       notes: null, 
       tasks: null,
@@ -53,6 +55,7 @@ export default class JobModalShow extends React.Component {
   }
 
   handleChange = (event) => {
+    debugger
     this.setState({
       job: {...this.state.job, [event.target.name]: event.target.value}
     })
@@ -255,7 +258,23 @@ export default class JobModalShow extends React.Component {
                 </select>
               </div>
 
-              <div >
+              {
+                this.state.job.status !== "Not Applied"
+                ? <div className="input-group mb-3" >
+                    <label className="sr-only" htmlFor="inlineFormInputGroup"></label>
+                    <div className="input-group mb-2">
+                      <div className="input-group-prepend">
+                        <div className="input-group-text">Date Applied</div>
+                      </div>
+                      <input type="date" className="form-control" id="inlineFormInputGroup" value="" onChange={this.handleChange}/>
+                    </div>
+                  </div>
+                : null
+              }
+
+              {/* <DatePicker />  */}
+              
+              <div>
                 {
                   this.state.tasks 
                   ? <TasksBox 
