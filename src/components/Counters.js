@@ -2,16 +2,33 @@ import React from 'react'
 
 export default class Counters extends React.Component {
 
+  constructor(){
+    super()
+    this.state = {
+      update: true
+    }
+  }
 
-  renderCounter(counter){
+
+  renderCounter = (counter) => {
     return(
       <div className="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
         <div className="d-flex align-items-center justify-content-center mb-2">
-          <strong className="number" data-number={counter.value}>0</strong>
+          <strong className="number" data-number={parseInt(counter["value"])}>0</strong>
         </div>
         <span className="caption">{counter.name}</span>
       </div>
     )
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.counters !== this.props.counters) {
+      this.setState({update: !this.state.update});
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
   }
 
   render() {
