@@ -172,7 +172,7 @@ export default class NotesBrowser extends React.Component{
 
           {/* not sure how to make data-filter work tbh  */}
           <div className="row justify-content-center mb-5" data-aos="fade-up">
-            <div id="filters" className="filters text-center button-group col-md-7">
+            <div id="note-filters" className="filters text-center button-group col-md-7">
               <button className="btn btn-primary" data-filter="*" onClick={this.setFilter}>All</button>
               <button className="btn btn-primary" data-filter="event" onClick={this.setFilter}>Events</button>
               <button className="btn btn-primary" data-filter="lead" onClick={this.setFilter}>Leads</button>

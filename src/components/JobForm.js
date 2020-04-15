@@ -30,7 +30,9 @@ export default class JobForm extends React.Component{
                     <input type="text" className="form-control form-control-lg" placeholder="Link..."></input>
                   </div>
                   <div className="span2 mr-4">
-                    <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Add Job</button>
+                    {/* <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Add Job</button> */}
+                    <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search">Add Job</button>
+
                   </div>
                 </div>
               </form>
@@ -38,9 +40,9 @@ export default class JobForm extends React.Component{
           </div>
         </div>
 
-        <a href="#next" className="scroll-button smoothscroll">
+        {/* <a href="#next" className="scroll-button smoothscroll">
           <span className=" icon-keyboard_arrow_down"></span>
-        </a>
+        </a> */}
 
       </section>
     )
