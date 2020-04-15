@@ -13,23 +13,23 @@ export default class List extends React.Component{
         <path fillRule="evenodd" d="M0 4.5A1.5 1.5 0 011.5 3h13A1.5 1.5 0 0116 4.5v2.384l-7.614 2.03a1.5 1.5 0 01-.772 0L0 6.884V4.5zM1.5 4a.5.5 0 00-.5.5v1.616l6.871 1.832a.5.5 0 00.258 0L15 6.116V4.5a.5.5 0 00-.5-.5h-13zM5 2.5A1.5 1.5 0 016.5 1h3A1.5 1.5 0 0111 2.5V3h-1v-.5a.5.5 0 00-.5-.5h-3a.5.5 0 00-.5.5V3H5v-.5z" clipRule="evenodd"/>
       </svg>
 
-    const notApplied = <span className="badge badge-pill badge-danger">Not Applied</span>
-    const followUp = <span className="badge badge-pill badge-success">Follow Up</span>
+    const open = <span className="badge badge-pill badge-danger">Open</span>
+    const inProcess = <span className="badge badge-pill badge-success">In Process</span>
     const closed = <span className="badge badge-pill badge-secondary">Closed</span>
 
     let badge 
     switch (item.status){
-      case "not-applied":
-        badge = notApplied
+      case "open":
+        badge = open
         break
-      case "follow-up":
-        badge = followUp
+      case "in-process":
+        badge = inProcess
         break
       case "closed":
         badge = closed
         break
       default:
-        badge = notApplied
+        badge = open
     }
 
     return(
@@ -61,8 +61,8 @@ export default class List extends React.Component{
               <div className="row justify-content-center mb-5" data-aos="fade-up">
                 <div id="filters" className="filters text-center button-group col-md-7">
                   <button className="btn btn-primary" data-filter="*" onClick={this.props.setFilter}>All</button>
-                  <button className="btn btn-primary" data-filter="Not Applied" onClick={this.props.setFilter}>Not Applied</button>
-                  <button className="btn btn-primary" data-filter="follow-up" onClick={this.props.setFilter}>Follow-Up</button>
+                  <button className="btn btn-primary" data-filter="open" onClick={this.props.setFilter}>Open</button>
+                  <button className="btn btn-primary" data-filter="in-process" onClick={this.props.setFilter}>In Process</button>
                   <button className="btn btn-primary" data-filter="closed" onClick={this.props.setFilter}>Closed</button>
                 </div>
               </div>  

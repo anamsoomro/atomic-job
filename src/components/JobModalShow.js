@@ -253,14 +253,14 @@ export default class JobModalShow extends React.Component {
                   <label className="input-group-text" htmlFor="inputGroupSelect01">Status</label>
                 </div>
                 <select className="custom-select" name="status" id="inputGroupSelect01" value={this.state.job.status} onChange={this.handleChange}>
-                  <option name="status" value="Not Applied">Not Applied</option>
-                  <option name="status" value="follow-up">Follow-Up</option>
+                  <option name="status" value="open">Open</option>
+                  <option name="status" value="in-process">In Process</option>
                   <option name="status" value="closed">Closed</option>
                 </select>
               </div>
 
               {
-                this.state.job.status !== "Not Applied"
+                this.state.job.status !== "open"
                 ? <div className="input-group mb-3" >
                     <label className="sr-only" htmlFor="inlineFormInputGroup"></label>
                     <div className="input-group mb-2">
