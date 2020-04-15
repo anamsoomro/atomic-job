@@ -13,7 +13,7 @@ export default class JobModalShow extends React.Component {
         company: "",
         status: "",
         interview: "",
-        // dateApplied: 
+        dateApplied: "",
       },
       notes: null, 
       tasks: null,
@@ -55,7 +55,7 @@ export default class JobModalShow extends React.Component {
   }
 
   handleChange = (event) => {
-    debugger
+    console.log("handleChange", event.target.name)
     this.setState({
       job: {...this.state.job, [event.target.name]: event.target.value}
     })
@@ -264,9 +264,9 @@ export default class JobModalShow extends React.Component {
                     <label className="sr-only" htmlFor="inlineFormInputGroup"></label>
                     <div className="input-group mb-2">
                       <div className="input-group-prepend">
-                        <div className="input-group-text">Date Applied</div>
+                        <div className="input-group-text" >Date Applied</div>
                       </div>
-                      <input type="date" className="form-control" id="inlineFormInputGroup" value="" onChange={this.handleChange}/>
+                      <input type="date" className="form-control" id="inlineFormInputGroup" name="dateApplied" value={this.state.job.date_applied} onChange={this.handleChange}/>
                     </div>
                   </div>
                 : null
