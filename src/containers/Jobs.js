@@ -80,9 +80,13 @@ export default class Jobs extends React.Component {
         url: event.target[3].value,
         status: "Not Applied",
         interview: "false",
-        user_id: this.state.user_id
+        user_id: this.state.user_id,
+        dateApplied: ""
       })
     }
+
+    console.log("addJob", postObject)
+
     event.target.reset()
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
@@ -97,6 +101,7 @@ export default class Jobs extends React.Component {
   }
 
   editJob = (job) => {
+    console.log("editJob", job)
     fetch(`http://localhost:3000/jobs/${job.id}`,{
       method: "PATCH",
       headers: {
@@ -108,7 +113,8 @@ export default class Jobs extends React.Component {
         company: job.company,
         location: job.location,
         status: job.status,
-        interview: job.interview
+        interview: job.interview,
+        dateApplied: job.dateApplied
       })
     })
     .then(resp => resp.json())

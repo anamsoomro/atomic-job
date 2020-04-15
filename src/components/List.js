@@ -6,7 +6,7 @@ import React from 'react'
 export default class List extends React.Component{
 
   renderRow = (item) => {
-
+    console.log("item", item)
     const briefcase = 
       <svg className="bi bi-briefcase" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" d="M0 12.5A1.5 1.5 0 001.5 14h13a1.5 1.5 0 001.5-1.5v-6h-1v6a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5v-6H0v6z" clipRule="evenodd"/>
@@ -39,7 +39,7 @@ export default class List extends React.Component{
         <td>{item.company}</td>
         <td>{item.title}</td>
         <td>{item.location}</td>
-        <td> maybe </td>
+        <td>{item.dateApplied}</td>
         <td>{badge}</td>
       </tr>
     )
@@ -49,6 +49,7 @@ export default class List extends React.Component{
     return(
       !!this.props.items
        ? (<section className="site-section pt-0 pb-0 mb-5">
+
             <div className="container">
               <div className="mb-5 mt-5" >
                 <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-eye mr-3"></span>Jobs Tracking</h3>
@@ -68,7 +69,6 @@ export default class List extends React.Component{
 
               <table className="table table-hover" width="100%" >
                 <thead>
-                  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
                   {/* <i class="fa fa-fw fa-sort"> for up and down arrows</i> */} 
                   {/* <i class="fa fa-sort-asc"> down arrow asc</i> */} 
                   {/* <i class="fa fa-sort-desc"> up arrrow desc </i> */} 
