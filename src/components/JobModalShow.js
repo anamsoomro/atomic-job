@@ -143,7 +143,6 @@ export default class JobModalShow extends React.Component {
     })
   }
 
-
   // FUNCTIONS REGARDING TASKS
 
   editTask = (task) => {

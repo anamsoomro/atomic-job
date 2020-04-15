@@ -5,7 +5,6 @@ import List from '../components/List'
 import JobForm from "../components/JobForm"
 import JobModalShow from '../components/JobModalShow'
 
-
 export default class Jobs extends React.Component {
 
   constructor(props){
@@ -119,11 +118,11 @@ export default class Jobs extends React.Component {
     })
     .then(resp => resp.json())
     .then(updatedJob => {
-      let updatedJobList = this.state.jobs.map(job => 
+      let updatedJobList = this.state.jobsDisplay.map(job => 
         job.id === updatedJob.id ? job = updatedJob : job
       )
       this.setState({
-        jobs: updatedJobList,
+        // jobs: updatedJobList,
         jobsDisplay: updatedJobList
       })
     })
