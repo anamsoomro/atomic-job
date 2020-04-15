@@ -16,7 +16,7 @@ export default class Jobs extends React.Component {
       user_id: props.user.id,
       showJob: null,
       search: '',
-      sortAsc: true                      
+      sortAsc: false                      
     }
   }
 
@@ -78,7 +78,7 @@ export default class Jobs extends React.Component {
         company: event.target[1].value,
         location: event.target[2].value,
         url: event.target[3].value,
-        status: "Not Applied",
+        status: "open",
         interview: "false",
         user_id: this.state.user_id,
         dateApplied: ""
@@ -146,6 +146,8 @@ export default class Jobs extends React.Component {
   }
 
   setFilter = (event) => {
+    // this doesnt hold when close a modal 
+    // jobs display somehow gets reset to being all jobs
     let filter = event.target.dataset.filter
     let filteredJobs
     filter === "*"
