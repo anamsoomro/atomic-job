@@ -10,12 +10,14 @@ export default class Jobs extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      jobs : false, 
-      jobsDisplay: false, 
+      jobs : null, 
+      jobsDisplay: null, 
       user_id: props.user.id,
       showJob: null,
-      search: '',
-      sortAsc: false                      
+      search: null,
+      filter: null,
+      sort: null,
+      sortAsc: null                      
     }
   }
 
@@ -47,22 +49,6 @@ export default class Jobs extends React.Component {
     })
   }
 
-  handleSearch = (e) => {
-    let searchedJobs = this.state.jobs.filter(job => job.title.toLowerCase().includes(e.target.value.toLowerCase()) || job.company.toLowerCase().includes(e.target.value.toLowerCase()) || job.location.toLowerCase().includes(e.target.value.toLowerCase()))
-    this.setState({jobsDisplay: searchedJobs})
-  }
-
-  handleSort = (e) => {
-    let sortBy = e.target.getAttribute("name")
-    let sorted
-    this.state.sortAsc
-    ? sorted = this.state.jobsDisplay.sort( (jobA, jobB) => jobA[sortBy] > jobB[sortBy] ? 1 : -1 )
-    : sorted = this.state.jobsDisplay.sort( (jobA, jobB) => jobA[sortBy] > jobB[sortBy] ? -1 : 1 )
-    this.setState({
-      sortAsc: !this.state.sortAsc,
-      jobsDisplay: sorted
-    })
-  } 
 
   addJob = (event) => {
     event.preventDefault()
@@ -90,7 +76,6 @@ export default class Jobs extends React.Component {
       this.state.jobs ? this.state.jobs.push(newJob) :  this.state.jobs = [newJob]
       this.setState({
         jobs: this.state.jobs,
-        jobsDisplay: this.state.jobs
       })
     })
   }
@@ -113,11 +98,15 @@ export default class Jobs extends React.Component {
     })
     .then(resp => resp.json())
     .then(updatedJob => {
-      let updatedJobList = this.state.jobsDisplay.map(job => 
+      let updatedDisplayJobList = this.state.jobsDisplay.map(job => 
+        job.id === updatedJob.id ? job = updatedJob : job
+      )
+      let updatedJobList = this.state.jobs.map(job => 
         job.id === updatedJob.id ? job = updatedJob : job
       )
       this.setState({
-        jobsDisplay: updatedJobList
+        jobsDisplay: updatedDisplayJobList,
+        jobs: updatedJobList 
       })
     })
   }
@@ -138,14 +127,43 @@ export default class Jobs extends React.Component {
     })
   }
 
-  setFilter = (event) => {
-    let filter = event.target.dataset.filter
-    let filteredJobs
-    filter === "*"
-    ? filteredJobs = this.state.jobs
-    : filteredJobs = this.state.jobs.filter( job => job.status === filter )
+
+  handleSearch = (event) => {
     this.setState({
-      jobsDisplay: filteredJobs
+      search: event.target.value
+    }, ()=> {this.handleJobDisplay()})
+  }
+
+  handleSort = (event) => {
+    this.setState({
+      sort: event.target.getAttribute("name")
+    }, ()=> {this.handleJobDisplay()})
+  } 
+
+  setFilter = (event) => {
+    this.setState({
+      filter: event.target.dataset.filter
+    }, ()=> {this.handleJobDisplay()})
+  }
+
+  handleJobDisplay = () => {
+    let jobList
+    if (!!this.state.filter){
+      this.state.filter === "*"
+      ? jobList = this.state.jobs
+      : jobList = this.state.jobs.filter( job => job.status === this.state.filter )
+    } 
+    if (!!this.state.sort){
+      this.state.sortAsc
+      ? jobList = jobList.sort( (jobA, jobB) => jobA[this.state.sort] > jobB[this.state.sort] ? 1 : -1 )
+      : jobList = jobList.sort( (jobA, jobB) => jobA[this.state.sort] > jobB[this.state.sort] ? -1 : 1 )
+      this.state.sortAsc = !this.state.sortAsc
+    }
+    if (!!this.state.search){
+      jobList = jobList.filter(job => job.title.toLowerCase().includes(this.state.search.toLowerCase()) || job.company.toLowerCase().includes(this.state.search.toLowerCase()) || job.location.toLowerCase().includes(this.state.search.toLowerCase()))
+    }
+    this.setState({
+      jobsDisplay: jobList
     })
   }
 

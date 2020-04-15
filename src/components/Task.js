@@ -61,8 +61,8 @@ export default class Task extends React.Component {
           ? 
             <li className="d-flex align-items-start mb-2" >
               {/* <span className="icon-check_circle mr-2 text-muted"></span> */}
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="materialUnchecked" checked={this.state.task.closed} onChange={this.toggleClosed}/>
+              <div className="form-check">
+                <input type="checkbox" className="form-check-input" id="materialUnchecked" checked={this.state.task.closed} onChange={this.toggleClosed}/>
                 {/* <label class="form-check-label" for="materialUnchecked">Material unchecked</label> */}
               </div>
               <span onClick={this.handleEdit} >{this.props.task.item}</span>
