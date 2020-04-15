@@ -1,12 +1,16 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
+
 
 export default class Navbar extends React.Component{
-
 
   renderUser = () => {
     if (this.props.user){
       return(
-        <button onClick={this.props.handleLogout} className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-user-circle"></span> {this.props.user.name}</button>
+        <Link to="/">
+          <button onClick={this.props.handleLogout} className="btn btn-primary border-width-2 d-none d-lg-inline-block"><span className="mr-2 icon-user-circle"></span> {this.props.user.name}</button>
+        </Link>
       )
     }
     else{
@@ -17,6 +21,7 @@ export default class Navbar extends React.Component{
   }
 
   render(){
+
     return(
       <div>
       <div className="site-mobile-menu site-navbar-target">
