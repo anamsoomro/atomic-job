@@ -211,6 +211,7 @@ export default class JobModalShow extends React.Component {
   }
 
 
+
   render(){
     return(
       <div className="modal fade" id="show-job">
@@ -260,6 +261,7 @@ export default class JobModalShow extends React.Component {
                   this.state.tasks 
                   ? <TasksBox 
                       tasks={this.state.tasks} 
+                      filterTask={this.filterTask}
                       addTask={this.addTask} 
                       editTask={this.editTask} 
                       deleteTask={this.deleteTask} 

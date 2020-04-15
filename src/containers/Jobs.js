@@ -49,7 +49,7 @@ export default class Jobs extends React.Component {
   }
 
   handleSearch = (e) => {
-    let searchedJobs = this.state.jobs.filter(job => job.title.toLowerCase().includes(e.target.value.toLowerCase()))
+    let searchedJobs = this.state.jobs.filter(job => job.title.toLowerCase().includes(e.target.value.toLowerCase()) || job.company.toLowerCase().includes(e.target.value.toLowerCase()) || job.location.toLowerCase().includes(e.target.value.toLowerCase()))
     this.setState({jobsDisplay: searchedJobs})
   }
 
