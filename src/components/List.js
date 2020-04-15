@@ -6,7 +6,7 @@ import React from 'react'
 export default class List extends React.Component{
 
   renderRow = (item) => {
-
+    console.log("item", item)
     const briefcase = 
       <svg className="bi bi-briefcase" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" d="M0 12.5A1.5 1.5 0 001.5 14h13a1.5 1.5 0 001.5-1.5v-6h-1v6a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5v-6H0v6z" clipRule="evenodd"/>
@@ -39,7 +39,7 @@ export default class List extends React.Component{
         <td>{item.company}</td>
         <td>{item.title}</td>
         <td>{item.location}</td>
-        <td> maybe </td>
+        <td>{item.dateApplied}</td>
         <td>{badge}</td>
       </tr>
     )
