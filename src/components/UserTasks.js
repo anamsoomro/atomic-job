@@ -6,7 +6,8 @@ export default class UserTasks extends React.Component {
   constructor(){
     super()
     this.state = {
-      tasks: []
+      tasks: [],
+      displayTasks: []
     }
   }
 
@@ -20,7 +21,8 @@ export default class UserTasks extends React.Component {
     .then(resp => resp.json())
     .then(tasksList => {
       this.setState({
-        tasks: tasksList
+        tasks: tasksList,
+        displayTasks: tasksList
       })
     })
   }
@@ -36,11 +38,11 @@ export default class UserTasks extends React.Component {
     })
     .then(resp => resp.json())
     .then(updatedTask => {
-      let updatedTaskList = this.state.tasks.map( task=> 
+      let updatedTaskList = this.state.displayTasks.map( task=> 
         task.id === updatedTask.id ? task = updatedTask : task
       )
       this.setState({
-        tasks: updatedTaskList
+        displayTasks: updatedTaskList
       })
     })
   }
@@ -65,9 +67,9 @@ export default class UserTasks extends React.Component {
     fetch(`http://localhost:3000/user_tasks`, postObj)
     .then(resp => resp.json())
     .then(newTask => {
-      this.state.tasks.push(newTask)
+      this.state.displayTasks.push(newTask)
       this.setState({
-        tasks: this.state.tasks
+        displayTasks: this.state.displayTasks
       })
     })
     } else {
@@ -87,9 +89,21 @@ export default class UserTasks extends React.Component {
     .then(resp => resp.json())
     .then(reminaingTaskList => {
       this.setState({
+        displayTasks: reminaingTaskList,
         tasks: reminaingTaskList
       })
     })
+  }
+
+  filterTask = (e) => {
+    console.log(e.target.value)
+    if(e.target.value === "All"){
+      this.setState({displayTasks: this.state.tasks})
+    }else if(e.target.value === 'Completed')
+      this.setState({displayTasks: this.state.tasks.filter(task => task.closed === true)}) 
+    else {
+      this.setState({displayTasks: this.state.tasks.filter(task => task.closed === false)}) 
+    }
   }
 
 
@@ -102,7 +116,9 @@ export default class UserTasks extends React.Component {
           <div className="mt-5 justify-content-center">
             {/* <div className="col-md-7 text-center"> */}
               <TasksBox 
-                tasks={this.state.tasks} 
+                page="user"
+                tasks={this.state.displayTasks} 
+                filterTask={this.filterTask}
                 addTask={this.addTask} 
                 editTask={this.editTask} 
                 deleteTask={this.deleteTask} 

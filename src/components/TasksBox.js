@@ -8,6 +8,17 @@ export default class TasksBox extends React.Component {
     return(
         <div className="mb-5">
           <h3 className="h5 d-flex align-items-center mb-4 text-primary"><span className="icon-list task mr-3"></span>Tasks</h3>
+          {this.props.page === "user" 
+          ? 
+          <select className="h5 d-flex align-items-center mb-4 text-primary" onChange={this.props.filterTask}>
+            <option>All</option>
+            <option>Completed</option>
+            <option>Incomplete</option>
+            </select>
+            
+            :null
+          }
+          
           <ul className="list-unstyled m-0 p-0">
             {this.props.tasks.map (task => 
               <Task 
