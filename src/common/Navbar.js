@@ -33,11 +33,11 @@ export default class Navbar extends React.Component{
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="site-logo col-6">
-              <a href="index.html">Atomic Job  </a>
+              <a href="/">Atomic Job  </a>
             </div>
             <nav className="mx-auto site-navigation">
               <ul className="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-                <li><a href="/" className="nav-link active"> Home</a></li>
+                <li><a href="/" className="nav-link active"> Tasks</a></li>
                 <li><a href="/jobs">Jobs</a></li>
                 <li><a href="/notes">Notes</a></li>
                 <li><a href="/about">About</a></li>

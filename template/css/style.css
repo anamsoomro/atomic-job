@@ -920,6 +920,7 @@ h1, h2, h3, h4 {
     background: #90c317;
     border-color: #90c317; }
 
+
 .btn.btn-outline-white {
   background: transparent;
   border-width: 2px;
@@ -1375,16 +1376,16 @@ h1, h2, h3, h4 {
   font-size: .8rem;
   margin: 5px;
   background: rgba(52, 58, 64, 0.05);
-  color: #343a40;
+  color: #89ba16;
   text-transform: uppercase; }
   .filters .btn:hover, .filters .btn:focus, .filters .btn:active {
     border-color: transparent !important;
     background: rgba(52, 58, 64, 0.3) !important;
     color: #000; }
   .filters .btn.active {
-    background: #000 !important;
+    background: #89ba16 !important;
     color: #fff;
-    border-color: #000 !important; }
+    border-color: #89ba16 !important; }
 
 /* Isotope Transitions
 ------------------------------- */

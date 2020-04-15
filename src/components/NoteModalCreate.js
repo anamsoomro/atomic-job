@@ -24,7 +24,7 @@ export default class NoteModalCreate extends React.Component {
       title: "",
       content: "",
       category: "misc"
-    })
+    }) 
   }
 
   render(){
@@ -44,10 +44,10 @@ export default class NoteModalCreate extends React.Component {
               <div className="modal-footer">
                 <label>Category:</label>
                 <select name="category" onChange={this.handleChange}>
+                <option value="misc"> Misc </option>
                   <option value="event"> Event </option>
                   <option value="lead"> Lead </option>
                   <option value="company"> Company </option>
-                  <option value="misc"> Misc </option>
                 </select>
                 <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.handleSubmit}>Save</button>
                 {/* <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button> */}

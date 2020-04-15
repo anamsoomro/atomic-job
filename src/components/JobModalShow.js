@@ -217,7 +217,7 @@ export default class JobModalShow extends React.Component {
 
   render(){
     return(
-      <div className="modal fade" id="show-job">
+      <div className="modal fade" id="show-job" >
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">

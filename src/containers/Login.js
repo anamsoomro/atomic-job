@@ -83,7 +83,7 @@ export default class Login extends React.Component {
 
                     <div className="row form-group">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" htmlFor="fname">Email</label>
+                        <label className="text-black" htmlFor="fname">Username</label>
                         <input onChange = {this.changeForm} name = "userName" type="text" id="fname" className="form-control" placeholder="Name" />
                       </div>
                     </div>
@@ -114,7 +114,7 @@ export default class Login extends React.Component {
 
                     <div className="row form-group">
                       <div className="col-md-12 mb-3 mb-md-0">
-                        <label className="text-black" htmlFor="fname">Email</label>
+                        <label className="text-black" htmlFor="fname">Username</label>
                         <input onChange = {this.changeForm} name = "userName" type="text" id="fname" className="form-control" placeholder="Name" />
                       </div>
                     </div>

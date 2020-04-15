@@ -18,7 +18,7 @@ export default class Home extends React.Component{
     return(
       <div className="site-wrap">
         
-        <Title title = "Your job listings" />
+        <Title title = "Tasks" />
         
         <UserTasks user={this.props.user}/>
 
