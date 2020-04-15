@@ -5,7 +5,6 @@ import List from '../components/List'
 import JobForm from "../components/JobForm"
 import JobModalShow from '../components/JobModalShow'
 
-
 export default class Jobs extends React.Component {
 
   constructor(props){
@@ -16,7 +15,7 @@ export default class Jobs extends React.Component {
       user_id: props.user.id,
       showJob: null,
       search: '',
-      sortAsc: true                      
+      sortAsc: false                      
     }
   }
 
@@ -78,20 +77,16 @@ export default class Jobs extends React.Component {
         company: event.target[1].value,
         location: event.target[2].value,
         url: event.target[3].value,
-        status: "Not Applied",
+        status: "open",
         interview: "false",
         user_id: this.state.user_id,
         dateApplied: ""
       })
     }
-
-    console.log("addJob", postObject)
-
     event.target.reset()
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
     .then(newJob => {
-      console.log("newJob posted", newJob)
       this.state.jobs ? this.state.jobs.push(newJob) :  this.state.jobs = [newJob]
       this.setState({
         jobs: this.state.jobs,
@@ -101,7 +96,6 @@ export default class Jobs extends React.Component {
   }
 
   editJob = (job) => {
-    console.log("editJob", job)
     fetch(`http://localhost:3000/jobs/${job.id}`,{
       method: "PATCH",
       headers: {
@@ -119,11 +113,10 @@ export default class Jobs extends React.Component {
     })
     .then(resp => resp.json())
     .then(updatedJob => {
-      let updatedJobList = this.state.jobs.map(job => 
+      let updatedJobList = this.state.jobsDisplay.map(job => 
         job.id === updatedJob.id ? job = updatedJob : job
       )
       this.setState({
-        jobs: updatedJobList,
         jobsDisplay: updatedJobList
       })
     })
@@ -157,13 +150,12 @@ export default class Jobs extends React.Component {
   }
 
   render(){
+    
     return (
       <div>
         <JobForm addJob={this.addJob}/>
          <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch} setFilter={this.setFilter} handleSort={this.handleSort}/>
-        { this.state.showJob 
-        ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
-        : null }
+         <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
       </div>
     )
   }

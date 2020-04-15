@@ -1698,3 +1698,8 @@ h1, h2, h3, h4 {
     border: 1px solid lightgrey;
     border-radius: 0.3em;
   }
+
+  .job-logo {
+    width: 20px;
+    height: 20px;
+  }

@@ -52,7 +52,6 @@ export default class Login extends React.Component {
       })
         .then(resp => resp.json())
         .then(data => {
-          console.log(data)
           if(!data["failure"]){
             localStorage.setItem("token", data.jwt)
             localStorage.setItem("user_id", data.user.id)

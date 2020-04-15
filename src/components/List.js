@@ -6,36 +6,49 @@ import React from 'react'
 export default class List extends React.Component{
 
   renderRow = (item) => {
-    console.log("item", item)
     const briefcase = 
       <svg className="bi bi-briefcase" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" d="M0 12.5A1.5 1.5 0 001.5 14h13a1.5 1.5 0 001.5-1.5v-6h-1v6a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5v-6H0v6z" clipRule="evenodd"/>
         <path fillRule="evenodd" d="M0 4.5A1.5 1.5 0 011.5 3h13A1.5 1.5 0 0116 4.5v2.384l-7.614 2.03a1.5 1.5 0 01-.772 0L0 6.884V4.5zM1.5 4a.5.5 0 00-.5.5v1.616l6.871 1.832a.5.5 0 00.258 0L15 6.116V4.5a.5.5 0 00-.5-.5h-13zM5 2.5A1.5 1.5 0 016.5 1h3A1.5 1.5 0 0111 2.5V3h-1v-.5a.5.5 0 00-.5-.5h-3a.5.5 0 00-.5.5V3H5v-.5z" clipRule="evenodd"/>
       </svg>
 
-    const notApplied = <span className="badge badge-pill badge-danger">Not Applied</span>
-    const followUp = <span className="badge badge-pill badge-success">Follow Up</span>
+    const open = <span className="badge badge-pill badge-danger">Open</span>
+    const inProcess = <span className="badge badge-pill badge-success">In Process</span>
     const closed = <span className="badge badge-pill badge-secondary">Closed</span>
+
+    let logo = null 
+    if (item.url.includes("monster.com")){
+      logo = "https://media.newjobs.com/global/img/jobr/monster-app-logo.png"
+    }
+    if (item.url.includes("indeed.com")){
+      logo = "https://pbs.twimg.com/profile_images/465901126684913664/sTJZxF5G_400x400.jpeg"
+    }
+    if (item.url.includes("linkedin.com/")){
+      logo = "https://1000logos.net/wp-content/uploads/2017/03/LinkedIn-Logo.png"
+    }
+    if (logo){
+      logo = <img className="job-logo" src= {logo} />
+    }
 
     let badge 
     switch (item.status){
-      case "not-applied":
-        badge = notApplied
+      case "open":
+        badge = open
         break
-      case "follow-up":
-        badge = followUp
+      case "in-process":
+        badge = inProcess
         break
       case "closed":
         badge = closed
         break
       default:
-        badge = notApplied
+        badge = open
     }
 
     return(
       <tr key={item.id} data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
         {/* maybe switch below out with linkedin/monster/indeed */}
-        <td>{briefcase}</td>
+        <td>{logo?logo:briefcase}</td>
         <td>{item.company}</td>
         <td>{item.title}</td>
         <td>{item.location}</td>
@@ -61,8 +74,8 @@ export default class List extends React.Component{
               <div className="row justify-content-center mb-5" data-aos="fade-up">
                 <div id="filters" className="filters text-center button-group col-md-7">
                   <button className="btn btn-primary" data-filter="*" onClick={this.props.setFilter}>All</button>
-                  <button className="btn btn-primary" data-filter="Not Applied" onClick={this.props.setFilter}>Not Applied</button>
-                  <button className="btn btn-primary" data-filter="follow-up" onClick={this.props.setFilter}>Follow-Up</button>
+                  <button className="btn btn-primary" data-filter="open" onClick={this.props.setFilter}>Open</button>
+                  <button className="btn btn-primary" data-filter="in-process" onClick={this.props.setFilter}>In Process</button>
                   <button className="btn btn-primary" data-filter="closed" onClick={this.props.setFilter}>Closed</button>
                 </div>
               </div>  
