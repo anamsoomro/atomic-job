@@ -72,7 +72,7 @@ export default class List extends React.Component{
               </div>
 
               <div className="row justify-content-center mb-5" data-aos="fade-up">
-                <div id="filters" className="filters text-center button-group col-md-7">
+                <div id="job-filters" className="filters text-center button-group col-md-7">
                   <button className="btn btn-primary" data-filter="*" onClick={this.props.setFilter}>All</button>
                   <button className="btn btn-primary" data-filter="open" onClick={this.props.setFilter}>Open</button>
                   <button className="btn btn-primary" data-filter="in-process" onClick={this.props.setFilter}>In Process</button>
