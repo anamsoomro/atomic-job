@@ -83,14 +83,10 @@ export default class Jobs extends React.Component {
         dateApplied: ""
       })
     }
-
-    console.log("addJob", postObject)
-
     event.target.reset()
     fetch("http://localhost:3000/jobs", postObject)
     .then(resp => resp.json())
     .then(newJob => {
-      console.log("newJob posted", newJob)
       this.state.jobs ? this.state.jobs.push(newJob) :  this.state.jobs = [newJob]
       this.setState({
         jobs: this.state.jobs,
@@ -100,7 +96,6 @@ export default class Jobs extends React.Component {
   }
 
   editJob = (job) => {
-    console.log("editJob", job)
     fetch(`http://localhost:3000/jobs/${job.id}`,{
       method: "PATCH",
       headers: {
@@ -122,7 +117,6 @@ export default class Jobs extends React.Component {
         job.id === updatedJob.id ? job = updatedJob : job
       )
       this.setState({
-        // jobs: updatedJobList,
         jobsDisplay: updatedJobList
       })
     })
@@ -145,8 +139,6 @@ export default class Jobs extends React.Component {
   }
 
   setFilter = (event) => {
-    // this doesnt hold when close a modal 
-    // jobs display somehow gets reset to being all jobs
     let filter = event.target.dataset.filter
     let filteredJobs
     filter === "*"
@@ -162,9 +154,7 @@ export default class Jobs extends React.Component {
       <div>
         <JobForm addJob={this.addJob}/>
          <List title = " " items={this.state.jobsDisplay} handleShowJob={this.handleShowJob} handleSearch={this.handleSearch} setFilter={this.setFilter} handleSort={this.handleSort}/>
-        { this.state.showJob 
-        ? <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
-        : null }
+         <JobModalShow job={this.state.showJob} deleteJob={this.deleteJob} editJob={this.editJob}/> 
       </div>
     )
   }

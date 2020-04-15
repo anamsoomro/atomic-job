@@ -96,7 +96,6 @@ export default class UserTasks extends React.Component {
   }
 
   filterTask = (e) => {
-    console.log(e.target.value)
     if(e.target.value === "All"){
       this.setState({displayTasks: this.state.tasks})
     }else if(e.target.value === 'Completed')
@@ -108,7 +107,6 @@ export default class UserTasks extends React.Component {
 
 
   render(){
-    console.log("usertasks rendered")
     return(
 
       // <section className="site-section">

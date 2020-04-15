@@ -1,7 +1,6 @@
 import React from "react"
 import NotesBox from "../components/NotesBox"
 import TasksBox from "../components/TasksBox"
-// import DatePicker from "../components/DatePicker"
 
 export default class JobModalShow extends React.Component {
 
@@ -21,29 +20,34 @@ export default class JobModalShow extends React.Component {
     }
   }
 
-  // modal only mounts the first time, udpate for rest
-  componentDidMount(){
-    fetch(`http://localhost:3000/jobs/${this.props.job.id}`, {
+  componentDidUpdate(){
+    let isAJob = this.props.job 
+    let isFirstJob = this.state.job.id ? false : true
+    let isADiffJob = isAJob ? (this.props.job.id !== this.state.job.id) : false
+
+    const fetchJobData = () => {
+      fetch(`http://localhost:3000/jobs/${this.props.job.id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.token}` 
-      }
-    })
-    .then(resp => resp.json())
-    .then(jobData => {
-      this.setState({
-        job: this.props.job,
-        notes: jobData.notes,
-        tasks: jobData.tasks
+        }
       })
-    })
-  }
-  componentDidUpdate(){
-    if(this.props.job.id !== this.state.job.id){
-      this.setState({
-        job: this.props.job
-      }, () => console.log("state updated", this.state.job))
+      .then(resp => resp.json())
+      .then(jobData => {
+        this.setState({
+          job: this.props.job,
+          notes: jobData.notes,
+          tasks: jobData.tasks
+        })
+      })
     }
+
+    if(isAJob && isFirstJob){
+      fetchJobData()
+    } else if (isAJob && isADiffJob){
+      fetchJobData()
+    }
+   
   }
 
   // FUNCTION REGARDING JOBS
@@ -55,7 +59,6 @@ export default class JobModalShow extends React.Component {
   }
 
   handleChange = (event) => {
-    console.log("handleChange", event.target.name)
     this.setState({
       job: {...this.state.job, [event.target.name]: event.target.value}
     })
@@ -66,7 +69,6 @@ export default class JobModalShow extends React.Component {
     this.setState({
       editing: false
     })
-    // if you open a brand new job dont make any edits, hit save it takes it off of job list. but its in the database 
   }
 
 
@@ -216,7 +218,7 @@ export default class JobModalShow extends React.Component {
 
   render(){
     return(
-      <div className="modal fade" id="show-job">
+      <div className="modal fade" id="show-job" >
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -227,7 +229,6 @@ export default class JobModalShow extends React.Component {
                     <h4> <input type="text" name="company" value={this.state.job.company} placeholder="enter copmany..." onChange={this.handleChange}/> </h4>
                     <h6> <input type="text" name="location" value={this.state.job.location} placeholder="enter location..." onChange={this.handleChange}/> </h6>
                     <h6> <input type="text" name="url" value={this.state.job.url} placeholder="enter url..." onChange={this.handleChange}/> </h6>
-                    {/* add one for link */}
                     <h6 onClick={this.handleSubmit}> <span className="icon-check"></span>  </h6>
                   </header>)
                 : (<header className="text-justify">
@@ -240,7 +241,7 @@ export default class JobModalShow extends React.Component {
                   </header>)
               }
 
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close" >
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -271,9 +272,6 @@ export default class JobModalShow extends React.Component {
                   </div>
                 : null
               }
-
-              {/* <DatePicker />  */}
-              
               <div>
                 {
                   this.state.tasks 
