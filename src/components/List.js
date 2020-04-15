@@ -17,6 +17,20 @@ export default class List extends React.Component{
     const followUp = <span className="badge badge-pill badge-success">Follow Up</span>
     const closed = <span className="badge badge-pill badge-secondary">Closed</span>
 
+    let logo = null 
+    if (item.url.includes("monster.com")){
+      logo = "https://media.newjobs.com/global/img/jobr/monster-app-logo.png"
+    }
+    if (item.url.includes("indeed.com")){
+      logo = "https://pbs.twimg.com/profile_images/465901126684913664/sTJZxF5G_400x400.jpeg"
+    }
+    if (item.url.includes("linkedin.com/")){
+      logo = "https://1000logos.net/wp-content/uploads/2017/03/LinkedIn-Logo.png"
+    }
+    if (logo){
+      logo = <img className="job-logo" src= {logo} />
+    }
+
     let badge 
     switch (item.status){
       case "not-applied":
@@ -35,7 +49,7 @@ export default class List extends React.Component{
     return(
       <tr key={item.id} data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
         {/* maybe switch below out with linkedin/monster/indeed */}
-        <td>{briefcase}</td>
+        <td>{logo?logo:briefcase}</td>
         <td>{item.company}</td>
         <td>{item.title}</td>
         <td>{item.location}</td>
