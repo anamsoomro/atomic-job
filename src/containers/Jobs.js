@@ -17,7 +17,7 @@ export default class Jobs extends React.Component {
       search: null,
       filter: null,
       sort: null,
-      sortAsc: null, 
+      sortAsc: null 
     }
   }
 
@@ -77,7 +77,7 @@ export default class Jobs extends React.Component {
       // this.state.jobsDisplay ? this.state.jobsDisplay.push(newJob) :  this.state.jobsDisplay = [newJob]
       this.setState({
         jobs: this.state.jobs,
-        jobsDisplay: this.state.jobsDisplay,
+        jobsDisplay: this.state.jobs,
         showJob: newJob
       })
     })
@@ -110,23 +110,10 @@ export default class Jobs extends React.Component {
       this.setState({
         jobsDisplay: updatedDisplayJobList,
         jobs: updatedJobList,
-        scroll: document.body.scrollHeight
-        
       })
-      // console.log("this is when i would want to scroll it")
-      // let jobList = document.getElementById("job-list")
-      // jobList.scrollIntoView(true)
-      // // idk why it re renders after this 
-
     })
   }
 
-  // componentDidUpdate(){
-  //   console.log("this is when i would want to scroll it")
-  //   let jobList = document.getElementById("job-list")
-  //   jobList.scrollIntoView(true)
-  //   // scrolls on add new job. and than reloads on submit 
-  // }
 
   deleteJob = (job) => {
     fetch(`http://localhost:3000/jobs/${job.id}`,{
@@ -154,7 +141,7 @@ export default class Jobs extends React.Component {
   handleSort = (event) => {
     this.setState({
       sort: event.target.getAttribute("name")
-    }, ()=> {this.handleJobDisplay()})
+    }, () => this.handleJobDisplay() )
   } 
 
   setFilter = (event) => {
@@ -164,14 +151,14 @@ export default class Jobs extends React.Component {
   }
 
   handleJobDisplay = () => {
-    let jobList
+    let jobList = this.state.jobs
     if (!!this.state.filter){
       this.state.filter === "*"
       ? jobList = this.state.jobs
       : jobList = this.state.jobs.filter( job => job.status === this.state.filter )
     } 
     if (!!this.state.sort){
-      this.state.sortAsc
+      this.state.sortAsc 
       ? jobList = jobList.sort( (jobA, jobB) => jobA[this.state.sort] > jobB[this.state.sort] ? 1 : -1 )
       : jobList = jobList.sort( (jobA, jobB) => jobA[this.state.sort] > jobB[this.state.sort] ? -1 : 1 )
       this.state.sortAsc = !this.state.sortAsc
