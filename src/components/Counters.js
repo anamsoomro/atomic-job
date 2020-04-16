@@ -56,10 +56,10 @@ export default class Counters extends React.Component {
 
 Counters.defaultProps = {
   counters: [
-    {name: "Job Postings", value: 30},
-    {name: "Notes", value: 299},
-    {name: "Companies", value: 25},
-    {name: "Tasks", value: 35}
+    {name: "Users registered", value: 5},
+    {name: "Job Postings saved", value: 10},
+    {name: "Tasks assigned", value: 15},
+    {name: "Notes Created", value: 20}
   ],
   title: "Your Job Search Stats",
   description: "This is default values for counters. You should provide something as props or change code at /components/Counters.js"

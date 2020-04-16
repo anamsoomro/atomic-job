@@ -39,12 +39,12 @@ export default class About extends React.Component {
       <div>
          <Title title = "About Us" />
          <Counters 
-          counters = {[
-            {name: "Users registered", value: this.state.counters[0].value},
-            {name: "Notes", value: this.state.counters[1].value},
-            {name: "Companies", value: this.state.counters[2].value},
-            {name: "Tasks", value: this.state.counters[3].value}
-          ]}
+          // counters = {[
+          //   {name: "Users registered", value: this.state.counters[0].value},
+          //   {name: "Notes", value: this.state.counters[1].value},
+          //   {name: "Companies", value: this.state.counters[2].value},
+          //   {name: "Tasks", value: this.state.counters[3].value}
+          // ]}
           title= {this.state.title}
           description= {this.state.description}
          />
