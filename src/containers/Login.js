@@ -72,12 +72,26 @@ export default class Login extends React.Component {
     return(
       <div>
 
-          <Title title = "Sign up / Login"/>
+          <section className="section-hero overlay inner-page bg-image" style={{"backgroundImage": "url('images/hero_1.jpg')"}} id="home-section">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-7">
+                  <h1 className="text-white font-weight-bold">Atomic Job</h1>
+                  <div className="custom-breadcrumbs">
+                    {/* <a href="/">Home</a> <span className="mx-2 slash">/</span> */}
+                    <span className="text-white"><strong>Organize your job serach. </strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* <Title title = "Sign up / Login"/> */}
           <section className="site-section">
             <div className="container">
               <div className="row">
                 <div className="col-lg-6 mb-5">
-                  <h2 className="mb-4">Sign Up To JobBoard</h2>
+                  <h2 className="mb-4">Sign Up</h2>
                   <form onSubmit = {this.createUser} className="p-4 border rounded">
 
                     <div className="row form-group">
@@ -108,7 +122,7 @@ export default class Login extends React.Component {
                   </form>
                 </div>
                 <div className="col-lg-6">
-                  <h2 className="mb-4">Log In To JobBoard</h2>
+                  <h2 className="mb-4">Log In</h2>
                   <form action="#" className="p-4 border rounded">
 
                     <div className="row form-group">

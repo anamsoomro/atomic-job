@@ -13,7 +13,7 @@ export default class JobForm extends React.Component{
             <div className="col-md-12">
               <div className="mb-5 text-center">
                 <h1 className="text-white font-weight-bold">The Easiest Way To Get Your Dream Job</h1>
-                <p>I dont know how we will use that thing, but you can edit it in the /components/Jobform.js</p>
+                {/* <p>I dont know how we will use that thing, but you can edit it in the /components/Jobform.js</p> */}
               </div>
               <form className="search-jobs-form" onSubmit={this.props.addJob}>
                 <div className="row mb-5">
