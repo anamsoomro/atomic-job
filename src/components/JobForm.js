@@ -32,7 +32,7 @@ export default class JobForm extends React.Component{
                   </div>
                   <div className="span2 mr-4">
                     {/* <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search"><span className="icon-search icon mr-2"></span>Add Job</button> */}
-                    <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search">Add Job</button>
+                    <button type="submit" className="btn btn-primary btn-lg btn-block text-white btn-search" data-toggle="modal" data-target="#show-job">Add Job</button>
 
                   </div>
                 </div>

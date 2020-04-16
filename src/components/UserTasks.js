@@ -108,11 +108,10 @@ export default class UserTasks extends React.Component {
 
   render(){
     return(
-
-      // <section className="site-section">
         <div className="container">
-          <div className="mt-5 justify-content-center">
-            {/* <div className="col-md-7 text-center"> */}
+          {/* <div className="mt-5 justify-content-center"> */}
+          <div className="mt-5">
+
               <TasksBox 
                 page="user"
                 tasks={this.state.displayTasks} 
@@ -121,10 +120,8 @@ export default class UserTasks extends React.Component {
                 editTask={this.editTask} 
                 deleteTask={this.deleteTask} 
                 handleTaskChange={this.handleTaskChange}/>
-            {/* </div>  */}
           </div> 
         </div> 
-      // </section>
 
 
     )

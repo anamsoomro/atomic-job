@@ -170,7 +170,7 @@ export default class NotesBrowser extends React.Component{
       <section className="site-section services-section bg-light block__62849 pt-5" id="next-section">
         <div className="container">
 
-          {/* not sure how to make data-filter work tbh  */}
+          {/* not sure how to make data-filter work tbh 
           <div className="row justify-content-center mb-5" data-aos="fade-up">
             <div id="notes" className="filters text-center button-group col-md-7">
               <button className="btn btn-primary" data-filter="*" onClick={this.setFilter}>All</button>
@@ -179,7 +179,29 @@ export default class NotesBrowser extends React.Component{
               <button className="btn btn-primary" data-filter="company" onClick={this.setFilter}>Companies</button>
               <button className="btn btn-primary" data-filter="misc" onClick={this.setFilter}>Misc</button>
             </div>
+          </div>   */}
+
+          <div className="row justify-content-center mb-5" data-aos="fade-up">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label className="btn btn-primary" data-filter="*" onClick={this.setFilter}>
+                <input type="radio" checked/> All
+              </label>
+              <label className="btn btn-primary" data-filter="event" onClick={this.setFilter}>
+                <input type="radio"  /> Events
+              </label>
+              <label className="btn btn-primary" data-filter="lead" onClick={this.setFilter}>
+                <input type="radio"  /> Leads 
+              </label>
+              <label className="btn btn-primary" data-filter="company" onClick={this.setFilter}>
+                <input type="radio" /> Companies
+              </label>
+              <label className="btn btn-primary" data-filter="misc" onClick={this.setFilter}>
+                <input type="radio" /> Misc
+              </label>
+            </div>
           </div>  
+
+
 
           <div className="row" >
             {/* Create a New Note*/}

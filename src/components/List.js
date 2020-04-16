@@ -60,7 +60,8 @@ export default class List extends React.Component{
 
   render(){
     return(
-      !!this.props.items
+      <div id="job-list">
+      {!!this.props.items
        ? (<section className="site-section pt-0 pb-0 mb-5">
 
             <div className="container">
@@ -71,14 +72,36 @@ export default class List extends React.Component{
                 <input onChange={this.props.handleSearch} className="form-control" type="text" placeholder="Search" aria-label="Search"/>
               </div>
 
-              <div className="row justify-content-center mb-5" data-aos="fade-up">
+              {/* <div className="row justify-content-center mb-5" data-aos="fade-up">
                 <div id="job-filters" className="filters text-center button-group col-md-7">
-                  <button className="btn btn-primary" data-filter="*" onClick={this.props.setFilter}>All</button>
-                  <button className="btn btn-primary" data-filter="open" onClick={this.props.setFilter}>Open</button>
-                  <button className="btn btn-primary" data-filter="in-process" onClick={this.props.setFilter}>In Process</button>
-                  <button className="btn btn-primary" data-filter="closed" onClick={this.props.setFilter}>Closed</button>
+                  <button className="btn btn-primary" data-filter="*" onClick={this.props.setFilter} data-toggle="button" aria-pressed="false">All</button>
+                  <button className="btn btn-primary" data-filter="open" onClick={this.props.setFilter} data-toggle="button" aria-pressed="false">Open</button>
+                  <button className="btn btn-primary" data-filter="in-process" onClick={this.props.setFilter} data-toggle="button" aria-pressed="false">In Process</button>
+                  <button className="btn btn-primary" data-filter="closed" onClick={this.props.setFilter} data-toggle="button" aria-pressed="false">Closed</button>
+                </div>
+              </div>   */}
+
+              <div className="row justify-content-center mb-5" data-aos="fade-up">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-primary active" data-filter="*"onClick={this.props.setFilter}>
+                    <input type="radio"   checked/> All
+                  </label>
+                  <label class="btn btn-primary" data-filter="open" onClick={this.props.setFilter}>
+                    <input type="radio"  /> Open
+                  </label>
+                  <label class="btn btn-primary" data-filter="in-process" onClick={this.props.setFilter}>
+                    <input type="radio"  /> In Process
+                  </label>
+                  
+                  <label class="btn btn-primary" data-filter="closed" onClick={this.props.setFilter}>
+                    <input type="radio" /> Closed
+                  </label>
                 </div>
               </div>  
+
+                            
+
+              
 
               <table className="table table-hover" width="100%" >
                 <thead>
@@ -104,7 +127,8 @@ export default class List extends React.Component{
              <div className="col-md-7 text-center">
                <h2 className="section-title mb-2">You currently are tracking no jobs...</h2>
              </div>
-           </div> ) )
+           </div> ) )}
+      </div>
    )
   }
 }

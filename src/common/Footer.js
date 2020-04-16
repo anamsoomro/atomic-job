@@ -10,8 +10,8 @@ export default class Footer extends React.Component{
         {/* <a href="#top" className="smoothscroll scroll-top">
           <span className="icon-keyboard_arrow_up"></span>
         </a> */}
-        <div className="container">
-          <div className="row mb-5">
+        <div className="container" >
+          {/* <div className="row mb-5" >
             <div className="col-6 col-md-3 mb-4 mb-md-0">
               <h3>Contact Us</h3>
               <div className="footer-social">
@@ -21,7 +21,7 @@ export default class Footer extends React.Component{
                 <a href="linkedin.com"><span className="icon-linkedin"></span></a>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="row text-center">
             <div className="col-12">
               <p className="copyright"><small>

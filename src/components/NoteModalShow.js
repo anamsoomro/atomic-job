@@ -34,9 +34,9 @@ export default class NoteModalShow extends React.Component {
           <div className="modal-content">
             <div className="modal-header">
               <input type="text" name="title" value={this.props.note.title} onChange={this.props.handleChange}/>
-              <button type="button" className="close"  >
+              {/* <button type="button" className="close"  >
                 <span onClick = {this.handleClose}>&times;</span>
-              </button>
+              </button> */}
             </div>
             <div className="modal-body">
               <textarea className = "big-text-area" style = {{height: this.textareaHeigth()}} name="content" value={this.props.note.content} onChange={this.props.handleChange}/>

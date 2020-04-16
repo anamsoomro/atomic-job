@@ -17,7 +17,7 @@ export default class Jobs extends React.Component {
       search: null,
       filter: null,
       sort: null,
-      sortAsc: null                      
+      sortAsc: null, 
     }
   }
 
@@ -74,8 +74,11 @@ export default class Jobs extends React.Component {
     .then(resp => resp.json())
     .then(newJob => {
       this.state.jobs ? this.state.jobs.push(newJob) :  this.state.jobs = [newJob]
+      // this.state.jobsDisplay ? this.state.jobsDisplay.push(newJob) :  this.state.jobsDisplay = [newJob]
       this.setState({
         jobs: this.state.jobs,
+        jobsDisplay: this.state.jobsDisplay,
+        showJob: newJob
       })
     })
   }
@@ -106,10 +109,24 @@ export default class Jobs extends React.Component {
       )
       this.setState({
         jobsDisplay: updatedDisplayJobList,
-        jobs: updatedJobList 
+        jobs: updatedJobList,
+        scroll: document.body.scrollHeight
+        
       })
+      // console.log("this is when i would want to scroll it")
+      // let jobList = document.getElementById("job-list")
+      // jobList.scrollIntoView(true)
+      // // idk why it re renders after this 
+
     })
   }
+
+  // componentDidUpdate(){
+  //   console.log("this is when i would want to scroll it")
+  //   let jobList = document.getElementById("job-list")
+  //   jobList.scrollIntoView(true)
+  //   // scrolls on add new job. and than reloads on submit 
+  // }
 
   deleteJob = (job) => {
     fetch(`http://localhost:3000/jobs/${job.id}`,{
