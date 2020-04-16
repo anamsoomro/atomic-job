@@ -47,7 +47,6 @@ export default class List extends React.Component{
 
     return(
       <tr key={item.id} data-toggle="modal" data-target="#show-job" onClick={()=>this.props.handleShowJob(item)}>
-        {/* maybe switch below out with linkedin/monster/indeed */}
         <td>{logo?logo:briefcase}</td>
         <td>{item.company}</td>
         <td>{item.title}</td>
@@ -60,8 +59,7 @@ export default class List extends React.Component{
 
   render(){
     return(
-      <div id="job-list">
-      {!!this.props.items
+      !!this.props.items
        ? (<section className="site-section pt-0 pb-0 mb-5">
 
             <div className="container">
@@ -99,15 +97,8 @@ export default class List extends React.Component{
                 </div>
               </div>  
 
-                            
-
-              
-
               <table className="table table-hover" width="100%" >
                 <thead>
-                  {/* <i class="fa fa-fw fa-sort"> for up and down arrows</i> */} 
-                  {/* <i class="fa fa-sort-asc"> down arrow asc</i> */} 
-                  {/* <i class="fa fa-sort-desc"> up arrrow desc </i> */} 
                   <tr>
                     <th className="th-sm"></th>
                     <th className="th-sm" ><i className="fa fa-fw fa-sort" name="company" onClick={this.props.handleSort}></i>Company</th>
@@ -127,8 +118,7 @@ export default class List extends React.Component{
              <div className="col-md-7 text-center">
                <h2 className="section-title mb-2">You currently are tracking no jobs...</h2>
              </div>
-           </div> ) )}
-      </div>
+           </div> ) )
    )
   }
 }

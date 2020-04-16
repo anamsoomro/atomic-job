@@ -298,10 +298,8 @@ export default class JobModalShow extends React.Component {
               </div>
             </div>
             <div className="modal-footer">
-              <a href="#job-list">
               <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.handleSubmit}>Save</button>
               <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleDelete}>Delete</button>
-              </a>
             </div>
           </div>
         </div>
